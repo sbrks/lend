@@ -1,0 +1,7 @@
+<h1>User Items</h1>
+<% @items.each do |item| %>
+
+	<% if @user_id === item.user_id %>
+	<h3><%= item.title %></h3>
+	<% end %>
+<% end %>

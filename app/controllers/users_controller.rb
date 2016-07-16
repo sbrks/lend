@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:index, :show, :edit, :update, :destroy]
+  before_action :require_login, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
     @users = User.all
+    @items = Item.all
     render :index
   end
 
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
   	@user = User.find(params[:id])
+    @items = @user.items
   	render :show
   end
 
@@ -23,6 +25,8 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
+    render 'edit'
   end
 
   # POST /users
@@ -44,15 +48,13 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'user was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+      @user = User.find(params[:id])
+      if @user.update_attributes(user_params)
+        redirect_to @user
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
-    end
 end
   # DELETE /users/1
   # DELETE /users/1.json

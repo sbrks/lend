@@ -1,1 +1,25 @@
-edit.html.erb
+<div class="container">
+
+<h1>Update Profile</h1>
+
+<div class="row">
+
+    <%= form_for(@user) do |f| %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+    <br>
+    <br>
+	   <%= f.submit "Save changes", class: "button" %>
+      <!--this will submit to user#update -->
+    <% end %>
+
+
+  </div>
+  </div>
+</div>
+</div>

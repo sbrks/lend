@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  # before_action :set_item, except: [:index, :show] 
+  # only: [:show, :edit, :update, :destroy]
 
-  # before_action :require_login
+  before_action :require_login, except: [:index, :show]
 
 
 
@@ -9,11 +10,16 @@ class ItemsController < ApplicationController
   # GET /items.json
   def index
     @items = Item.all
+    @user = User.find(2)
+
+    # @user = Item.find(params[:user_id].items
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    @item = Item.find(params[:id])
+    @user = User.find(2)
   end
 
   # GET /items/new
@@ -29,50 +35,50 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    params[:items][:user_id] = current_user.id
 
-    respond_to do |format|
-      if @item.save
-        format.html { redirect_to @item, notice: 'Item was successfully created.' }
-        format.json { render :show, status: :created, location: @item }
-      else
-        format.html { render :new }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
-    end
+    # item = Item.find(params[:id])
+
+    item_params = params.require(:item).permit(:title, :description, :user_id)
+
+    Item.create(item_params)
+
+    redirect_to "/items/#{@item.id}"
+  end
+
+  def edit 
+    @item_update = Item.find(params[:id])
+    render "/items/edit"
   end
 
   # PATCH/PUT /items/1
   # PATCH/PUT /items/1.json
   def update
-    respond_to do |format|
-      if @item.update(item_params)
-        format.html { redirect_to @item, notice: 'Item was successfully updated.' }
-        format.json { render :show, status: :ok, location: @item }
-      else
-        format.html { render :edit }
-        format.json { render json: @item.errors, status: :unprocessable_entity }
-      end
+    @item_update = Item.find(params[:id])
+    item_params = params.require(:item).permit(:title, :description)
+    if @item_update.update_attributes(item_params)
+      flash[:success] = "Item updated successfully!"
+
+      item = Item.find(params[:id])
+      redirect_to "/items/#{item.id}"
     end
   end
 
   # DELETE /items/1
   # DELETE /items/1.json
   def destroy
-    @item.destroy
-    respond_to do |format|
-      format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    item = Item.find(params[:id])
+    item.destroy
+    redirect_to "/items"
+
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_item
-      @item = Item.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:title, :description)
     end
+
 end
