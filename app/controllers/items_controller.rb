@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 
     # item = Item.find(params[:id])
 
-    item_params = params.require(:item).permit(:title, :description, :user_id)
+    item_params = params.require(:item).permit(:title, :description, :user_id, :price, :availability)
 
     Item.create(item_params)
 
@@ -78,7 +78,7 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :description)
+      params.require(:item).permit(:title, :description, :price, :availability)
     end
 
 end

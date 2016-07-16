@@ -15,8 +15,8 @@
                 <h5>Offered by: <%= current_user.id %> </h5>
                 <h5>Created at: <%= item.created_at %>
 
-                <h5>Availability:</h5>
-              <h5>Price:</h5>
+                <h5>Availability: <%= item.availability %></h5>
+              <h5>Price:<%= item.price %></h5>
             </div>
 
       <div class="card-footer">
@@ -34,17 +34,3 @@
 
 
 <%= link_to 'New Item', new_item_path %>
-<!-- 
-      <div class="col s4">2</div>
-      <div class="col s4">3</div>
-    </div>
-    <div class="row">
-      <div class="col s4">4</div>
-      <div class="col s4">5</div>
-      <div class="col s4">6</div>
-    </div>
-    <div class="row">
-      <div class="col s4">7</div>
-      <div class="col s4">8</div>
-      <div class="col s4">9</div>
-    </div> -->

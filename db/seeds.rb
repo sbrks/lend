@@ -31,7 +31,7 @@ items = Item.create([
 		title: "Autel Robotics X-Star Premium Drone",
 		description: "The X-Star Premium is a sophisticated yet amazingly easy-to-fly quadcopter designed for superb aerial imagery. The 4K camera and 3-axis gimbal can record crystal-clear, smooth Ultra HD videos or take 12-MP photos with HD Live View up to 1.2 miles away. This drone is ready to fly out of the box, and can be flown with or without the help of the free Starlink mobile app. Powered by an intelligent flight control system, dual GPS and GLONASS satellite navigation and aided by the Starpoint Positioning System, the drone stays safe and stable, even indoors or at low altitudes. Where other drones might become erratic or fly away when there is magnetic interference, the X-Star is equipped with our exclusive SecureFly technology to help your drone come back home safely.",
 			image_url: "",
-		user_id: 2
+			user_id: 2
 	], 
 	[
 		title: "Autel Robotics X-Star Premium Drone",
