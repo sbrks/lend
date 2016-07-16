@@ -14,9 +14,8 @@ class SessionsController < ApplicationController
 		else
 			flash[:error] = "Failed to authenticate. Please try again."
 			redirect_to '/login'
-		end
 	end
-
+end
 
 	def destroy
 		logout

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  root to: "items#index"
+  root to: "home#index"
+
+  get '/', to: 'home#index'
 
   resources :items, :users
 
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   #user log in, logging in and out
-  get '/login', to: 'sessions#new'
+  get '/login', to: 'sessions#new', as: 'login'
   post '/sessions', to: 'sessions#create'
   delete '/sessions', to: 'sessions#destroy'
 
