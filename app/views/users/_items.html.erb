@@ -1,7 +1,10 @@
 <h1>User Items</h1>
 <% @items.each do |item| %>
 
-	<% if @user_id === item.user_id %>
+	<% if @user.id === item.user_id %>
+	<h3>items!</h3>
 	<h3><%= item.title %></h3>
+	<% else %>
+		<h4>No items yet!</h4>
 	<% end %>
 <% end %>

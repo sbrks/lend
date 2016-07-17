@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
 
+  resources :locations, :items, :users
   root to: "home#index"
 
   get '/', to: 'home#index'
 
-  resources :items, :users
+  get '/contact', to: 'home#contact'
+
+  get '/about', to: 'home#about'
 
 
   #create new users

@@ -4,15 +4,16 @@
 
 <% @items.each do |item| %>
     <div class="row">
-      <div class="col s12">
+      <div class="col s6">
         <div class="card hoverable indigo darken-1">
+
             <div class="card-header">
               <img src="#" height="200px" width="100%"/>
             </div>
 
           <div class="card-content" style="background-color:white"><h4><%= item.title %></h4>
               <p><%= item.description %></p>
-                <h5>Offered by: <%= current_user.id %> </h5>
+                <h5>Offered by: <%= @user %> </h5>
                 <h5>Created at: <%= item.created_at %>
 
                 <h5>Availability: <%= item.availability %></h5>
@@ -21,12 +22,14 @@
 
       <div class="card-footer">
          <div class="card-action">
-                 <%= link_to 'Show', item %>
-        <%= link_to 'Edit', edit_item_path(item) %>
-        <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= link_to 'Back', items_path %>
+              <%= link_to 'Show', item %>
+              <%= link_to 'Edit', edit_item_path(item) %>
+              <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <%= link_to 'Back', items_path %>
           </div>
         </div>
+
+
       </div>
     </div>
   </div>
@@ -34,3 +37,30 @@
 
 
 <%= link_to 'New Item', new_item_path %>
+
+
+     <!-- Modal Trigger -->
+  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Post New Item</a>
+
+  <!-- Modal Structure -->
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+

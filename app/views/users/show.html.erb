@@ -1,33 +1,20 @@
 <section class="hero">
     <div class="row">
         <h1>Welcome, <%= link_to @user.email %></h1>
-
+        <h3><%= request.location.city %></h3>
+        <h3><%= @userloc %></h3>
         </div>
 </section>
 
 
-<div class="container six rows">
+
         <div class="row" style="text-align:center">
             <div class="button button-primary" id="explore"><a href="/items/new">Post Item</a></div>
         </div>
-    </div>
 
-</div><br>
-
-
-<!--user photo div -->
- <div class="row">
-
-       <div class="eight columns offset-by-four">
-</div>
-
-<div class="row">
-    <div class="eight columns offset-by-five">
-            <div class="button button-primary" id="editbutton">
-            </div>
-        </div>
-</div>
-
-</div>
 
  <%= render "items" %>
+
+</div>
+
+

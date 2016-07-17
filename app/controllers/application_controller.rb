@@ -9,8 +9,8 @@ class ApplicationController < ActionController::Base
   private
 
     def current_user 
-  	@current_user ||= session[:user_id] && User.find_by_id(session[:user_id])
-  end
+  	  @current_user ||= session[:user_id] && User.find_by_id(session[:user_id])
+    end
 
   def require_login
   	if !current_user
@@ -19,5 +19,7 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+
+  helper_method :location
 
 end

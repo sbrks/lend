@@ -2,6 +2,14 @@ class User < ActiveRecord::Base
 
 	has_many :items
 
+	# geocoded_by :latitude, :longitude
+	
+	# acts_as_mappable
+
+	# reverse_geocoded_by :latitude, :longitude, :address => :location
+
+	# after_validation :geocode
+
 
 	BCrypt::Engine.cost = 12
 

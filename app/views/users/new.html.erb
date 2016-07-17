@@ -5,6 +5,8 @@
 	Email:<%= f.text_field :email, required: true %>
 	Password:<%= f.password_field :password, required: true %>
 	Password Confirmation:<%= f.password_field :password_confirmation %>
+	Latitude:<%= f.number_field :latitude, :class => 'text_field' %>
+	Longitude:<%= f.number_field :longitude %>
 	<%= f.submit "Submit" %>
 
 <% end %>

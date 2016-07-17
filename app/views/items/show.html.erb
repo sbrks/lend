@@ -9,7 +9,7 @@
 
           <div class="card-content" style="background-color:white"><h4><%= @item.title %></h4>
               <p><%= @item.description %></p>
-              <h5>Offered by: <%= current_user.id %></h5>
+              <h5>Offered by: <%= @user.id %></h5>
               <h5>Availability: <%= @item.availability %> </h5>
               <h5>Price: <%= @item.price %> </h5>
             </div>

@@ -16,9 +16,15 @@
  @import "materialize";
 
 
- * {
-/* 	background: red;*/
+ *  {
+	    font-family: Lato;
  }
+
+ .parallax-container {
+ 	height: 400px;
+ 	width: 100%;
+ }
+
 
 #nav-mobile {
 color: white
@@ -40,4 +46,6 @@ color: white
     height: 350px;
   }
 }
+
+
 
