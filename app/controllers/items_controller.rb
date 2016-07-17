@@ -8,10 +8,19 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = Item.all
+    if params[:query].present?
+      # @items = Item.search(params[:query], page: params[:page])
+      @items = Item.search(params[:query])
+    else
+      @items = Item.all
         # @user = User.find(params[:id])
-    params[:items][:user_id] =  @user
+      params[:items][:user_id] =  @user
     # @user = Item.find_by_id(params[:user_id]
+    end
+  end
+
+  def search_params
+    params.permit :page, :per_page, :sort_attribute, :sort_order, :location
   end
 
   # GET /items/1

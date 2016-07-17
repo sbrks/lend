@@ -1,10 +1,34 @@
 <p id="notice"><%= notice %></p>
-
+<div class='container'>
 <h1>Listing Items</h1>
+
+<!-- function search form! -->
+
+    <h1>Search items</h1>
+     <fieldset>
+    <label>Search for an item:</label>
+    <%= form_tag items_path, method: :get do %>
+
+    <div class='form-group'>
+        <%= text_field_tag :query, params[:query], class: 'form-control' %></fieldset>
+  <fieldset>
+      <label>Filter by Price:</label>
+      <%= select_tag "price", options_for_select(Item.pluck("price").uniq, params[:price]), include_blank: true %>
+  </fieldset>  
+  <fieldset>
+    <label>Sort by:</label>
+    <%= select_tag "sort_attribute", options_for_select({"Title" => "title", "Location" => "location", "Availability" => "availability"}, params[:sort_attribute]), include_blank: true %>
+    <%= select_tag "sort_order", options_for_select({"Ascending" => "asc", "Descending" => "desc"}, params[:sort_order]), include_blank: true %>
+  </fieldset>
+        <%= submit_tag 'Search', class: 'btn btn-primary' %>
+    </div>
+    <% end %>
+
+<div class='container'>
 
 <% @items.each do |item| %>
     <div class="row">
-      <div class="col s6">
+      <div class="col s12">
         <div class="card hoverable indigo darken-1">
 
             <div class="card-header">
@@ -14,7 +38,7 @@
           <div class="card-content" style="background-color:white"><h4><%= item.title %></h4>
               <p><%= item.description %></p>
                 <h5>Offered by: <%= @user %> </h5>
-                <h5>Created at: <%= item.created_at %>
+                <h5>Created at: <%= item.created_at %></h5>
 
                 <h5>Availability: <%= item.availability %></h5>
               <h5>Price:<%= item.price %></h5>
@@ -35,32 +59,7 @@
   </div>
   <% end %>
 
-
-<%= link_to 'New Item', new_item_path %>
-
-
-     <!-- Modal Trigger -->
-  <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Post New Item</a>
-
-  <!-- Modal Structure -->
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
-
-
+  <%= link_to 'New Item', new_item_path %>
+</div>
 
 
