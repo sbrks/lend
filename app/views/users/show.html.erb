@@ -1,27 +1,37 @@
-<div class="container">
-<section class="hero">
+
+
     <div class="row">
+        <div class="col s6">
         <h2>Welcome, <%= @user.first_name %></h2>
         <h5>Location: <%= @user.location %></h5>
         <h5>Email: <%= @user.email %></h5>
         <h5>Member since: <%= @user.created_at.strftime("%m/%d/%y") %></h5>
+        <h5>Rating: 5 Stars</h5>
+            <div class="editprof waves-effect waves-light blue lighten-1 btn-small"><%= link_to 'Edit Profile', edit_user_path(@user) %></div>
+        </div>
+        <div class="col s6">
+            <br>
+            <img src="#" width="250px" height="250px">
+        </div>
      </div>
-</section>
-</div>
+
+
 
 <div class="container">
     <div class="row center-align">
-        <div class="showbutts col s12 m12 l6">
+        <div class="showbutts col s12 m6 l6">
         	<a id="lendbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items/new">Lend Something</a>
         </div>
-     	<div class="col s12 m12 l6">
+     	<div class="col s12 m6 l6">
      		<a id="borrowbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items">Borrow Something</a>
      	</div>
      </div>
 </div>
 
-
-<div class="container">
- 	<%= render "items" %>
+<div class="center-align">
+    <div class="row">
+        <div class="col s12">
+ 	      <%= render "items" %>
+        </div>
+    </div>
 </div>
-

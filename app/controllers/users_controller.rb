@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, except: :index
 
   # GET /users
   # GET /users.json
@@ -10,10 +10,11 @@ class UsersController < ApplicationController
   end
 
   # GET /users/1
-  # GET /users/1.json
   def show
   	@user = User.find(params[:id])
-    @items = Item.find_by_id(params[:user_id])
+    @user_id = session[:user_id]
+    @name = @user.email
+    @items = Item.all
   	render :show
   end
 
@@ -30,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   # POST /users
-  # POST /users.json
   def create
   	user_params = params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :location, :latitude, :longitude)
   	@user = User.new(user_params)

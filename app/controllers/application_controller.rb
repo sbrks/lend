@@ -15,6 +15,7 @@ class ApplicationController < ActionController::Base
   def require_login
   	if !current_user
   		redirect_to root_path
+      flash[:error] = "You must sign up or log in to your account first!"
   	end
   end
 

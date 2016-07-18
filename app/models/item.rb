@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-	searchkick
+	# searchkick
 	
 	belongs_to :users
 end

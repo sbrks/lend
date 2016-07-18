@@ -1,26 +1,30 @@
 <p id="notice"><%= notice %></p>
-<div class='container'>
-<h3>Listing Items</h3>
+<div class='container center-align'>
+<h3>All Items</h3>
+
+<div class="editprof waves-effect waves-light red lighten-1 btn"><%= link_to 'Add New Item', new_item_path %></div>
+
+
 
 <!-- function search form! -->
-
-    <h4>Search</h4>
+<div class="container center-align">
+    <h4>Search Items</h4>
      <fieldset>
       <label>Search for an item:</label>
         <%= form_tag items_path, method: :get do %>
 
-    <div class='form-group'>
+        <div class='form-group'>
         <%= text_field_tag :query, params[:query], class: 'form-control' %>
-    </fieldset>
         <%= submit_tag 'Search', class: 'btn btn-primary' %>
-    </div>
+      </fieldset>     
+        </div>
     <% end %>
+</div>
 
-<div class='container'>
 
 <% @items.each do |item| %>
     <div class="row">
-      <div class="col s12">
+      <div class="col s10 l6">
         <div class="card hoverable indigo darken-1">
 
             <div class="card-header">
@@ -29,14 +33,14 @@
 
           <div class="card-content" style="background-color:white"><h4><%= item.title %></h4>
               <p><%= item.description %></p>
-                <h5>Offered by: <%= @user %> </h5>
-                <h5>Created at: <%= item.created_at %></h5>
+                <h5>Offered by: <%= item.user_id %> </h5>
+                <h5>Created at: <%= item.created_at.strftime("%m/%d/%y") %> </h5>
 
                 <h5>Availability: <%= item.availability %></h5>
               <h5>Price:<%= item.price %></h5>
             </div>
 
-      <div class="card-footer">
+        <div class="card-footer">
          <div class="card-action">
               <%= link_to 'More Info', item %>
               <%= link_to 'Borrow This', edit_item_path(item) %>
@@ -48,10 +52,10 @@
 
       </div>
     </div>
-  </div>
-  <% end %>
 
-  <%= link_to 'New Item', new_item_path %>
+  <% end %>
 </div>
+
+  <div class="editprof waves-effect waves-light red lighten-1 btn"><%= link_to 'Post New Item', new_item_path %></div>
 
 
