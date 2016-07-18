@@ -8,15 +8,15 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label "Price Per Day" %><br>
     <%= f.text_field :price %>
   </div>
    <div class="field">
-    <%= f.label :availability %><br>
+    <%= f.label "Dates Available" %><br>
     <%= f.text_field :availability %>
   </div>
 
-  <%=f.hidden_field :user_id, :value => @user %>
+  <%=f.hidden_field :user_id, :value => @user%>
 
   <div class="actions">
     <%= f.submit "Save Changes" %>

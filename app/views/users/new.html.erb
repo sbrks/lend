@@ -2,11 +2,12 @@
 
 <%= form_for @user do |f| %>
 
+	First Name:<%= f.text_field :first_name, required: true %>
+	Last Name:<%= f.text_field :last_name %>
 	Email:<%= f.text_field :email, required: true %>
 	Password:<%= f.password_field :password, required: true %>
 	Password Confirmation:<%= f.password_field :password_confirmation %>
-	Latitude:<%= f.number_field :latitude, :class => 'text_field' %>
-	Longitude:<%= f.number_field :longitude %>
+	Location:<%= f.text_field :location %>
 	<%= f.submit "Submit" %>
 
 <% end %>

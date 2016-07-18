@@ -1,25 +1,17 @@
 <p id="notice"><%= notice %></p>
 <div class='container'>
-<h1>Listing Items</h1>
+<h3>Listing Items</h3>
 
 <!-- function search form! -->
 
-    <h1>Search items</h1>
+    <h4>Search</h4>
      <fieldset>
-    <label>Search for an item:</label>
-    <%= form_tag items_path, method: :get do %>
+      <label>Search for an item:</label>
+        <%= form_tag items_path, method: :get do %>
 
     <div class='form-group'>
-        <%= text_field_tag :query, params[:query], class: 'form-control' %></fieldset>
-  <fieldset>
-      <label>Filter by Price:</label>
-      <%= select_tag "price", options_for_select(Item.pluck("price").uniq, params[:price]), include_blank: true %>
-  </fieldset>  
-  <fieldset>
-    <label>Sort by:</label>
-    <%= select_tag "sort_attribute", options_for_select({"Title" => "title", "Location" => "location", "Availability" => "availability"}, params[:sort_attribute]), include_blank: true %>
-    <%= select_tag "sort_order", options_for_select({"Ascending" => "asc", "Descending" => "desc"}, params[:sort_order]), include_blank: true %>
-  </fieldset>
+        <%= text_field_tag :query, params[:query], class: 'form-control' %>
+    </fieldset>
         <%= submit_tag 'Search', class: 'btn btn-primary' %>
     </div>
     <% end %>
@@ -46,8 +38,8 @@
 
       <div class="card-footer">
          <div class="card-action">
-              <%= link_to 'Show', item %>
-              <%= link_to 'Edit', edit_item_path(item) %>
+              <%= link_to 'More Info', item %>
+              <%= link_to 'Borrow This', edit_item_path(item) %>
               <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
               <%= link_to 'Back', items_path %>
           </div>

@@ -25,9 +25,104 @@
  	width: 100%;
  }
 
+.materialboxed {
+	padding: 15px;	
+}
 
-#nav-mobile {
-color: white
+ul.img-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 10px;
+	text-align: center;
+}
+
+ul.img-list li {
+	display: inline-block;
+	height: 100px;
+  	margin: 0 1em 1em 0;
+  	position: relative;
+  	width: 300px;
+}
+
+ul.img-list li:hover { 
+  transform: scale(1.1);
+}
+
+
+
+ul.img-list li:hover span.text-content {
+  opacity: 1;
+
+}
+
+span.text-content {
+  background: rgba(0,0,0,0.5);
+  font-size: 40px;
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 325px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 400px;
+  opacity: 0;
+   -webkit-transition: opacity 300ms;
+  -moz-transition: opacity 300ms;
+  -o-transition: opacity 300ms;
+  transition: opacity 500ms;
+}
+
+span.text-content button {
+  background-color: red;
+ font-size: 20px;
+}
+
+span.text-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+.nav-wrapper {
+  width: 100%;
+}
+
+#lendbutton{
+  width: 300px;
+  font-size: 20px;
+
+}
+
+#borrowbutton {
+  width: 300px;
+  font-size: 20px;
+}
+
+a#borrowbutton:hover {
+  transform: scale(1.06);
+}
+
+a#lendbutton:hover {
+  transform: scale(1.06);
+}
+
+
+#nav-mobile a {
+  color: white;
+  font-size: 20px;
+  padding-top: 10px;
+ }
+
+ #nav-mobile li {
+  color: white;
+  font-size: 18px;
+  padding-top: 10px;
+ }
+
+ #nav-mobile a:hover {
+  transform: scale(1.2);
  }
 
  .card {
@@ -47,5 +142,31 @@ color: white
   }
 }
 
+.hover {
+	transform: scale(1.1);
+}
 
+.dropdown-button.btn {
+	width: 280px;
+	height: 60px;
+	font-size: 24px;
+	text-align: center;
+	padding-top: 10px;
 
+}
+
+a.dropdown-button.btn {
+	color: white;
+	text-align: center;
+}
+
+#dropdown1 a {
+	color: #42a5f5;
+	font-size: 24px;
+	text-align: center;
+}
+
+#dropdown1 a:hover {
+	background-color: white;
+	font-size: 32px;
+}

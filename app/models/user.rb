@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 
+	searchkick
+
 	has_many :items
 
 	# geocoded_by :latitude, :longitude

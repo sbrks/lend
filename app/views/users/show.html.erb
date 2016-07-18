@@ -1,20 +1,27 @@
+<div class="container">
 <section class="hero">
     <div class="row">
-        <h1>Welcome, <%= link_to @user.email %></h1>
-        <h3><%= request.location.city %></h3>
-        <h3><%= @userloc %></h3>
-        </div>
+        <h2>Welcome, <%= @user.first_name %></h2>
+        <h5>Location: <%= @user.location %></h5>
+        <h5>Email: <%= @user.email %></h5>
+        <h5>Member since: <%= @user.created_at.strftime("%m/%d/%y") %></h5>
+     </div>
 </section>
-
-
-
-        <div class="row" style="text-align:center">
-            <div class="button button-primary" id="explore"><a href="/items/new">Post Item</a></div>
-        </div>
-
-
- <%= render "items" %>
-
 </div>
 
+<div class="container">
+    <div class="row center-align">
+        <div class="showbutts col s12 m12 l6">
+        	<a id="lendbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items/new">Lend Something</a>
+        </div>
+     	<div class="col s12 m12 l6">
+     		<a id="borrowbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items">Borrow Something</a>
+     	</div>
+     </div>
+</div>
+
+
+<div class="container">
+ 	<%= render "items" %>
+</div>
 

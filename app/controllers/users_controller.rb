@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   # GET /users/1.json
   def show
   	@user = User.find(params[:id])
-    @items = @user.items
+    @items = Item.find_by_id(params[:user_id])
   	render :show
   end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-  	user_params = params.require(:user).permit(:email, :password, :password_confirmation, :latitude, :longitude)
+  	user_params = params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :location, :latitude, :longitude)
   	@user = User.new(user_params)
   	if @user.save
   		#login user
@@ -71,6 +71,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :latitude, :longitude)
+      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :location, :latitude, :longitude)
     end
 end

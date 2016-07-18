@@ -2,6 +2,17 @@ $(document).ready(function() {
   $('select').material_select();
   $('.modal-trigger').leanModal();
   $('.parallax').parallax();
+
+
+  $('.materialboxed').hover(
+  function() { $(this).addClass('hover') },
+  function() { $(this).removeClass('hover') } 
+  );
+
+
+
+
+
 });
 //if i use this, remove turbolinks gem
 
@@ -16,7 +27,4 @@ $(document).ready(function() {
     }
   );
 
-    $(document).ready(function(){
-    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
-    
-  });
+
