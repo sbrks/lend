@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :current_user
 
+  helper_method :mailbox, :conversation
+
 
   private
 
@@ -22,5 +24,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   helper_method :location
+
+  def mailbox
+    @mailbox ||= current_user.mailbox
+  end
+
+  def conversation
+    @conversation ||= mailbox.conversations.find(params[:id])
+  end
+
+
 
 end
