@@ -2,13 +2,6 @@ Rails.application.routes.draw do
 
   resources :locations, :items, :users, :mailbox
 
-  resources :conversations do
-    member do
-      post :reply
-      post :trash
-      post :untrash
-    end
-  end
 
   root to: "home#index"
 
@@ -34,10 +27,18 @@ Rails.application.routes.draw do
   # handles all unknown requests and sends them home
   get "*path" => "items#index"
 
-  #mailbox folder routes
-  get 'mailbox/inbox', to: 'mailbox#inbox', as: :mailbox_inbox
-  get 'mailbox/sent', to: "mailbox#sent", as: :mailbox_sent
-  get 'mailbox/trash', to: "mailbox#trash", as: :mailbox_trash
+  # mailbox folder routes
+  get "mailbox/inbox" => "mailbox#inbox", as: :mailbox_inbox
+  get "mailbox/sent" => "mailbox#sent", as: :mailbox_sent
+  get "mailbox/trash" => "mailbox#trash", as: :mailbox_trash
 
+    # conversations
+  resources :conversations do
+    member do
+      post :reply
+      post :trash
+      post :untrash
+    end
+  end
 
 end

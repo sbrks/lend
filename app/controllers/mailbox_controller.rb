@@ -5,11 +5,6 @@ class MailboxController < ApplicationController
     @active = :inbox
   end
 
-  def show
-  	@inbox = mailbox.inbox
-    @active = :inbox
-  end
-
   def sent
     @sent = mailbox.sentbox
     @active = :sent
@@ -19,6 +14,5 @@ class MailboxController < ApplicationController
     @trash = mailbox.trash
     @active = :trash
   end
-
 
 end
