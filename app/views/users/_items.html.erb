@@ -1,29 +1,36 @@
 <div class="container">
 <h3>My Stuff</h3>
-    <% @items.each do |item| %>
 
-      <% if @user_id === item.user_id %>
-<div class="container">
-	<div class="row">
+<h3>Stuff I've Offered</h3>
+<% @items.each do |item| %>
+<% if @user_id === item.user_id %>
+  <div class="container">
+	 <div class="row">
       <div class="col s12 m6 l6">
-      <h3>Stuff I've Offered</h3>
 
-        <h3><a href="/items/<%= item.id %>/"> <%= item.title %> </a></h3>
+        <h4><a href="/items/<%= item.id %>/"> <%= item.title %> </a></h4>
           Posted <%= (time_ago_in_words(item.created_at)) %> ago<br>
-          Description: <%= item.description %> <%= item.user_id %><br>
-          <%= link_to "Delete Item", {:controller => :items, :action => 'destroy', :id => item.id }, :method => :delete, :class => "trash-btn" %><br>
+          <h5>Description: <%= item.description %> <%= item.user_id %></h5><br>
+          <div class="col s12 m6 l4">
+          <%= link_to "Delete Item", {:controller => :items, :action => 'destroy', :id => item.id }, :method => :delete, :class => "trash-btn" %></div>
+          <div class="col s12 m6 l6">
           <a href="/items/<%= item.id %>/edit">Edit Post</a>
+          </div>
     	</div>
-   <div class="col s12 m6 l6">
+   <div class="col s12 m6 l4">
       <h3>Stuff I've Borrowed</h3>
-        <h3><a href="/items/<%= item.id %>/"> <%= item.title %> </a></h3>
+        <h4><a href="/items/<%= item.id %>/"> <%= item.title %> </a></h4>
           Posted <%= (time_ago_in_words(item.created_at)) %> ago<br>
           Description: <%= item.description %> <%= item.user_id %><br>
-          <%= link_to "Delete Item", {:controller => :items, :action => 'destroy', :id => item.id }, :method => :delete, :class => "trash-btn" %><br>
+
+        <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %>
+        
+          <%= link_to "Delete Item", {:controller => :items, :action => 'destroy', :id => item.id }, :method => :delete, data: { confirm: 'Are you sure?' }, :class => "trash-btn" %><br>
           <a href="/items/<%= item.id %>/edit">Edit Post</a>
     	</div>
 	</div>
-    <% end %>
+
+ <% end %>
    </div>
  </div> 
 <% end %>

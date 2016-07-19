@@ -33,10 +33,13 @@
 		<div class="col s12 offset-s6">
 		<ul id="nav-mobile" class="right">
 			<% if current_user %>
-  				<li>Signed in as <%=current_user.email %></a></li><li><%= link_to "Logout", sessions_path, method: :delete %></li>
+  				<li>Signed in as <%=current_user.email %></li>
+  				<li><%= link_to 'My Profile', user_path(current_user.id) %></li>
+  				<li><%= link_to "Logout", sessions_path, method: :delete %></li>
 			<% else %>
 				<li><%= link_to 'Log In', login_path %></li><li><%= link_to 'Signup', '/signup' %></li>
 			<% end %>
+
 		</ul>
 		</div>
 

@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   def show
     @items = Item.all
     @item = Item.find(params[:id])
+    @image = @item.image_url
     @user = current_user
     params[:item][:user_id] = @user.id
 
@@ -60,7 +61,7 @@ class ItemsController < ApplicationController
   # PATCH/PUT /items/1
   def update
     @item_update = Item.find(params[:id])
-    item_params = params.require(:item).permit(:title, :description, :price, :availability)
+    item_params = params.require(:item).permit(:title, :description, :price, :availability, :image_url)
     if @item_update.update_attributes(item_params)
       flash[:success] = "Item updated successfully!"
       item = Item.find(params[:id])
@@ -76,11 +77,9 @@ class ItemsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:title, :description, :price, :availability, :user_id)
+      params.require(:item).permit(:title, :description, :price, :availability, :user_id, :image_url)
     end
 
 end

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/about', to: 'home#about'
 
 
+
+
   #create new users
   get '/signup', to: 'users#new', as: 'sign_up'
   post '/users' => 'users#create'

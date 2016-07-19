@@ -149,13 +149,13 @@ a#lendbutton:hover {
 }
 
 .hover {
-	transform: scale(1.1);
+	transform: scale(1.08);
 }
 
 .dropdown-button.btn {
-	width: 280px;
-	height: 60px;
-	font-size: 24px;
+	width: 140px;
+	height: 54px;
+	font-size: 14px;
 	text-align: center;
 	padding-top: 10px;
 
@@ -175,4 +175,14 @@ a.dropdown-button.btn {
 #dropdown1 a:hover {
 	background-color: white;
 	font-size: 32px;
+}
+
+a.btn.itembutt {
+  background-color: #42a5f5;
+  color: white;
+  font-size:28px;
+}
+
+a.btn.itembutt:hover{
+  transform: scale(1.07);
 }
