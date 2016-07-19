@@ -1,13 +1,13 @@
 <div class="row">
       <div class="col s12">
-        <div class="card hoverable indigo darken-1">
+
+            <h2>Request to Borrow This Item from User <%= @item.user_id %> </h2>
+
             <div class="card-header">
-              <img src="#" height="200px" width="100%"/>
+              <%= image_tag("#{@item.image_url}", :width => "400") %>
             </div>
-
-            <h2>Request to Borrow This Item</h2>
-
-          <div class="card-content" style="background-color:white"><h4><%= @item.title %></h4>
+        
+              <%= @item.title %></h4>
               <h5><%= @item.description %></h5>
               <h5>Created at: <%= @item.created_at.strftime("%m/%d/%y") %> </h5>
               <h5>Offered by: <%= @item.user_id %></h5>
@@ -15,15 +15,10 @@
               <h5>Price: <%= @item.price %> per day </h5>
             </div>
 
-      <div class="card-footer">
-         <div class="card-action">
                  <%= link_to 'Show', @item %>
 <!--         <a href="/items/<%= @item.id %>/edit">Edit Item</a>
  -->        <%= link_to 'Edit', edit_item_path(@item) %>
-        <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %>
             <%= link_to 'Back', items_path %>
-          </div>
-        </div>
-      </div>
+
     </div>
   </div>

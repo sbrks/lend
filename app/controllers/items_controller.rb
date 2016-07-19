@@ -76,6 +76,11 @@ class ItemsController < ApplicationController
     redirect_to "/items"
   end
 
+  def borrow
+    @item = Item.find(params[:id])
+    render :borrow
+  end
+
   private
 
     def item_params
