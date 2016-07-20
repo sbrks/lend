@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
-	# searchkick
+	searchkick
 
 	has_many :items
 

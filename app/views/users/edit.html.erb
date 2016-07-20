@@ -24,6 +24,8 @@
       <%= f.label :password %>
       <%= f.password_field :password %>
 
+        <%= f.hidden_field :image_url, placeholder: "Profile Photo", role: "uploadcare-uploader" %>
+
 	   <%= f.submit "Save changes", class: "button" %>
       <!--this will submit to user#update -->
     <% end %>

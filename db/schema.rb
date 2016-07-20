@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160720042530) do
+ActiveRecord::Schema.define(version: 20160720091354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(version: 20160720042530) do
     t.string   "password_digest"
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "image_url"
   end
 
   add_foreign_key "items", "users"

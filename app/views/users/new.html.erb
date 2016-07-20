@@ -8,6 +8,8 @@
 	Password:<%= f.password_field :password, required: true %>
 	Password Confirmation:<%= f.password_field :password_confirmation %>
 	Location:<%= f.text_field :location %>
+	Add an image or video of exercise
+  <%= f.hidden_field :image_url, placeholder: "Profile Photo", role: "uploadcare-uploader" %>
 	<%= f.submit "Submit" %>
 
 <% end %>

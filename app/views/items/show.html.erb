@@ -6,7 +6,6 @@
             <div class="card-header">
             <%= image_tag("#{@item.image_url}", :width => "400") %>
             </div>
-
           <div class="card-content" style="background-color:white">
               <h4><%= @item.title %></h4>
               <h5><%= @item.description %></h5>
@@ -16,8 +15,6 @@
               <h5>Price: <%= @item.price %> per day </h5>
               <a class="btn itembutt" href="/items/<%= @item.id%>/borrow">BORROW</a>
             </div>
-
-
 
       <div class="card-footer">
          <div class="card-action">

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login, except: [:index, :new, :show]
+  before_action :require_login, except: [:index, :new, :show, :create]
 
   before_filter :validate_user, :only => [:edit, :update, :destroy]
 
@@ -14,8 +14,11 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
   	@user = User.find(params[:id])
-    @useritems = @user.items.find(params[:id])
     @user_id = session[:user_id]
+
+    unless @user.items != nil 
+      @useritems = @user.items.find(params[:id])
+    end
     @name = @user.email
     @items = Item.all
   	render :show
@@ -36,7 +39,7 @@ class UsersController < ApplicationController
 
   # POST /users
   def create
-  	user_params = params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :location, :latitude, :longitude)
+  	user_params = params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :location, :latitude, :longitude, :image_url)
   	@user = User.new(user_params)
   	if @user.save
   		#login user
@@ -75,7 +78,7 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :location, :latitude, :longitude)
+      params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :location, :latitude, :longitude, :image_url)
     end
 
     def validate_user

@@ -20,7 +20,7 @@
 
      <div class="field">
     <%= f.label "Image URL" %><br>
-      <%= f.text_field :image_url %>
+      <%= f.hidden_field :image_url, placeholder: "Profile Photo", role: "uploadcare-uploader" %>
      </div>
 
   <div class="actions">
