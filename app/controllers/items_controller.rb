@@ -2,6 +2,8 @@ class ItemsController < ApplicationController
 
   before_action :require_login, except: [:index, :show]
 
+   before_filter :validate_user, :only => [:edit, :update, :destroy]
+
 
   # GET /items
   def index
@@ -86,5 +88,11 @@ class ItemsController < ApplicationController
     def item_params
       params.require(:item).permit(:title, :description, :price, :availability, :user_id, :image_url)
     end
+
+    
+    def validate_user
+      redirect_to root_path unless current_user.id.to_s == params[:id]
+    end
+
 
 end

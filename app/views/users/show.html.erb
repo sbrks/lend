@@ -1,20 +1,22 @@
-
-
-    <div class="row">
-        <div class="col s6">
-        <h2>Welcome, <%= @user.first_name %></h2>
+<div class="row">
+    <div class="col s6"><% if @current_user != @user  %>
+    <h3><%= @user.first_name %>'s Profile</h3>
+        <% else %>
+        <h2>Welcome, <%= @current_user.first_name %></h2>
+        <% end %>
         <h5>Location: <%= @user.location %></h5>
         <h5>Email: <%= @user.email %></h5>
         <h5>Member since: <%= @user.created_at.strftime("%m/%d/%y") %></h5>
         <h5>Rating: 5 Stars</h5>
+        <% if @current_user == @user %>
             <div class="editprof waves-effect waves-light blue lighten-1 btn-small"><%= link_to 'Edit Profile', edit_user_path(@user) %></div>
+            <% end %>
         </div>
         <div class="col s6">
             <br>
             <img src="#" width="250px" height="250px">
         </div>
      </div>
-
 
 
 <div class="container">
@@ -29,24 +31,31 @@
 </div>
 
 <div class="container">
-<%= button_to 'Start a conversation', new_message_path, class: 'button', method: :get %>
+<% if @current_user != @user  %>
+<%= button_to 'Start a conversation', conversations_path, class: 'button', method: :get %>
+<% end %>
 
-<br><br><br>
 <div class="row">
-
+  <% if current_user.friend_request?(@user) %>
+    <%= button_to 'Accept', accept_path(@user), method: :post, class: 'button' %>
+    <%= button_to 'Decline', decline_path(@user), method: :post, class: 'button' %>
+  <% end %>
+  <% if current_user.friends_with?(@user) %>
     <%= button_to 'Send Message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), class: 'button', method: :post %>
     <%= button_to 'Remove', remove_path(@user), method: :post, class: 'button' %>
-
+  <% end %>
 </div>
-</div>
-
 
 
 
 <div class="center-align">
     <div class="row">
         <div class="col s12">
+        <% @items.each do |item| %>
+        <% if @user.id  == item.user_id %>
  	      <%= render "items" %>
+          <% end %>
+        <% end %>
         </div>
     </div>
 </div>

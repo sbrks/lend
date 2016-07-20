@@ -4,6 +4,25 @@ class User < ActiveRecord::Base
 
 	has_many :items
 
+	has_friendship
+
+#friendship methods
+	def friend_request?(user)
+   user && !friends_with?(user) && user.id.in?(requested_friend_ids)
+  end
+
+  def requested_friend_ids
+    requested_friends.pluck(:id)
+  end
+
+  def friend_pending?(user)
+   user && !friends_with?(user) && user.id.in?(pending_friend_ids)
+  end
+
+  def pending_friend_ids
+    pending_friends.pluck(:id)
+  end
+
 	# geocoded_by :latitude, :longitude
 	
 	# acts_as_mappable

@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row">
+    <div class='medium-3 columns'>
+      <h4>Message a Friend</h4>
+      <% current_user.friends.each do |user| %>
+        <% if user.id != current_user.id %>
+          <h5><%= link_to user.first_name, conversations_path(sender_id: current_user.id, recipient_id: user.id), method: :post %></h5>
+        <% end %>
+      <% end %>
+      <button class="menu"><%= button_to "Find New Friends", users_path, method: :get, class: "button" %></button>
+    </div>
+    <div class='medium-9 columns'>
+    <h3>Ongoing Conversations</h3>
+        <% @conversations.each do |conversation| %>
+          <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
+            <% if conversation.sender_id == current_user.id %>
+              <% recipient = User.find(conversation.recipient_id) %>
+            <% else %>
+              <% recipient = User.find(conversation.sender_id) %>
+            <% end %>
+          <% last_msg = conversation.messages.count - 1 %>
+          <h4><%= link_to recipient.first_name, conversation_messages_path(conversation)%></h4>
+            <%= conversation.messages[last_msg].body %>
+            <br>
+            <%= conversation.messages[last_msg].message_time %>
+          <hr>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>

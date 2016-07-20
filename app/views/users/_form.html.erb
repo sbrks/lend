@@ -1,1 +1,36 @@
-_form.html.erb
+<div class="row formCard">
+  <h2 class="profileTitle titles">Sign Up</h2>
+  <br>
+  <%= form_for(@user) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <div class="row form">  
+      <div class="large-6 columns">
+        <%= f.label :first_name, class: "formTitle" %>
+        <%= f.text_field :first_name %>  
+        <%= f.label :last_name, class: "formTitle" %>
+        <%= f.text_field :last_name %>
+        <%= f.label :email, class: "formTitle" %>
+        <%= f.text_field :email %>
+        <%= f.label :password, class: "formTitle" %>
+        <%= f.password_field :password %>
+      </div>
+    </div>
+    <br><br>
+    <div class="row">
+      <div class="large-12 columns large-offset-5">
+        <button type="submit" class="button interests">Create Profile</button>
+      </div>
+    </div>
+  <% end %>
+</div>

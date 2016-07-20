@@ -11,11 +11,10 @@
     <%= f.label "Price Per Day" %><br>
     <%= f.text_field :price %>
   </div>
-   <div class="field">
+   <input class="datepicker" type="date">
     <%= f.label "Date Available" %><br>
       <%= f.text_field :availability %>
-     </div>
-           <input type="date" class="datepicker">
+     </input>
 
   <%=f.hidden_field :user_id, :value => @user%>
 

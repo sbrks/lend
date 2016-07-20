@@ -39,39 +39,6 @@
   </div>
   <% end %>
 
-
-<% @items.each do |item| %>
-    <div class="row">
-      <div class="col s10 l6">
-        <div class="card hoverable indigo darken-1">
-
-            <div class="card-header">
-              <img src="#" height="200px" width="100%"/>
-            </div>
-
-          <div class="card-content" style="background-color:white"><h4><%= item.title %></h4>
-              <p><%= item.description %></p>
-                <h5>Offered by: <%= item.user_id %> </h5>
-                <h5>Created at: <%= item.created_at.strftime("%m/%d/%y") %> </h5>
-
-                <h5>Availability: <%= item.availability %></h5>
-              <h5>Price:<%= item.price %></h5>
-            </div>
-
-        <div class="card-footer">
-         <div class="card-action">
-              <%= link_to 'More Info', item %>
-              <%= link_to 'Borrow This', edit_item_path(item) %>
-              <%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %>
-              <%= link_to 'Back', items_path %>
-          </div>
-        </div>
-
-
-      </div>
-    </div>
-
-  <% end %>
 </div>
 
   <div class="editprof waves-effect waves-light red lighten-1 btn"><%= link_to 'Post New Item', new_item_path %></div>

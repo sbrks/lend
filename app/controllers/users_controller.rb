@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
-  before_action :require_login, except: :index
+  before_action :require_login, except: [:index, :new, :show]
+
+  before_filter :validate_user, :only => [:edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
@@ -12,6 +14,7 @@ class UsersController < ApplicationController
   # GET /users/1
   def show
   	@user = User.find(params[:id])
+    @useritems = @user.items.find(params[:id])
     @user_id = session[:user_id]
     @name = @user.email
     @items = Item.all
@@ -29,6 +32,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     render 'edit'
   end
+  
 
   # POST /users
   def create
@@ -73,4 +77,9 @@ end
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :location, :latitude, :longitude)
     end
+
+    def validate_user
+      redirect_to root_path unless current_user.id.to_s == params[:id]
+    end
+
 end

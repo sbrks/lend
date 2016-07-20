@@ -16,9 +16,7 @@
 <nav>
 	<div class="white-text nav-wrapper deep-purple darken-4 valign-wrapper">	
 		<a href="/" class="brand-logo center">LendZen</a>
-
 		<div class="row white-text">
-
 		<div class="col s12 pull-s6">
 			<ul id="nav-mobile" class="left">
 				<li><a href="/about">About</a></li>
@@ -27,24 +25,17 @@
 		</ul>
 		</div>
 		</div>
-
-		<div class="row">
-
-		<div class="col s12 offset-s6">
 		<ul id="nav-mobile" class="right">
 			<% if current_user %>
-  				<li>Signed in as <%=current_user.email %></li>
+  				<li> <%= current_user.email %></li>
   				<li><%= link_to 'My Profile', user_path(current_user.id) %></li>
+  				<li><%= link_to 'Messages', conversations_path %></li>
   				<li><%= link_to "Logout", sessions_path, method: :delete %></li>
 			<% else %>
-				<li><%= link_to 'Log In', login_path %></li><li><%= link_to 'Signup', '/signup' %></li>
+				<li><%= link_to 'Log In', login_path %></li>
+				<li><%= link_to 'Signup', '/signup' %></li>
 			<% end %>
-
 		</ul>
-		</div>
-
-		</div>
-
 	</div>
 </nav>
 
@@ -57,14 +48,10 @@
 </div>
 
 
-<footer class="page-footer deep-purple darken-4">
+<footer class="page-footer deep-purple darken-4" width="100%">
 	<div class="container">
 		<div class="row">
-<!-- 			<div class="col 16 s12">
-				<h5 class="white-text">Footer Content</h5>
-				<p class="grey-text text-lighten-4">You can use rows and columns to organize footer content</p>
-			</div> -->
-			<div class="col 14 offset-12 s12">
+			<div class="col s12 offset-12">
 				<h5 class="white-text">Links</h5>
 				<ul>
 					<li><a class="white-text text-lighten-3" href="#!">About</a></li>
@@ -84,5 +71,6 @@
 	</div>
 </footer>
 </div>
+
 </body>
 </html>

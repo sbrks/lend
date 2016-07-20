@@ -23,4 +23,8 @@ class ApplicationController < ActionController::Base
 
   helper_method :location
 
+  helper_method :validate_user
+
+
+
 end
