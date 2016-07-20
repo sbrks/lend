@@ -26,11 +26,12 @@ class ItemsController < ApplicationController
   def show
     @items = Item.all
     @item = Item.find(params[:id])
+    # @useritems = @user.items.find(params[:id])
+    @offeredbyid = @item.user_id
+    @offeredby = User.find(@offeredbyid)
     @image = @item.image_url
     @user = current_user
-    params[:item][:user_id] = @user.id
-
-    # @user = User.find(params[:id]
+    params[:item][:user_id] = @user.id  
   end
 
   # GET /items/new

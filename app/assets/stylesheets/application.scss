@@ -190,3 +190,12 @@ a.btn.itembutt:hover{
 .page-footer {
   width: 100%;
 }
+
+#editbutton a {
+  color: #42a5f5;
+  font-size: 18px;
+}
+#editbutton a:hover {
+  background-color:white;
+  transform: scale(1.07);
+}

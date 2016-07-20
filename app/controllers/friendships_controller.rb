@@ -1,5 +1,6 @@
 class FriendshipsController < ApplicationController
-	before_action :set_friend
+	
+  before_action :set_friend
 
   def show
     @user.friends

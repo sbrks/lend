@@ -16,9 +16,9 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
     @user_id = session[:user_id]
 
-    unless @user.items != nil 
+    #unless @user.items != nil 
       @useritems = @user.items.find(params[:id])
-    end
+    #end
     @name = @user.email
     @items = Item.all
   	render :show

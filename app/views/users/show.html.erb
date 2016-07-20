@@ -1,4 +1,16 @@
 <div class="row">
+  <% if current_user.friend_request?(@user) %>
+    <%= button_to 'Accept', accept_path(@user), method: :post, class: 'button' %>
+    <%= button_to 'Decline', decline_path(@user), method: :post, class: 'button' %>
+  <% end %>
+  <% if current_user.friends_with?(@user) %>
+    <%= button_to 'Send Message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), class: 'button', method: :post %>
+    <%= button_to 'Remove', remove_path(@user), method: :post, class: 'button' %>
+  <% end %>
+</div>
+
+
+<div class="row">
     <div class="col s6"><% if @current_user != @user  %>
     <h3><%= @user.first_name %>'s Profile</h3>
         <% else %>
@@ -9,8 +21,11 @@
         <h5>Member since: <%= @user.created_at.strftime("%m/%d/%y") %></h5>
         <h5>Rating: 5 Stars</h5>
         <% if @current_user == @user %>
-            <div class="editprof waves-effect waves-light blue lighten-1 btn-small"><%= link_to 'Edit Profile', edit_user_path(@user) %></div>
+            <div id="editbutton">
+                <a href="<%= edit_user_path(@user) %>">Edit Profile</a>
+            </div>
             <% end %>
+
         </div>
         <div class="col s6">
             <br>
@@ -46,8 +61,64 @@
   <% end %>
 </div>
 
+<li class="menu"><%= button_to "Messages", conversations_path, class: "button", method: :get %></li>
+
+<div class="row">
+  <div class="col s12">&emsp;</div>
+  <div class="col s8">
+    <% if current_user == @user %>
+      <a href="/users/<%= @user.id %>/edit"><i class="fi-pencil icons"></i>&ensp;Edit&emsp;|&emsp;</a>
+      <i class="fi-trash icons"></i>&ensp;<%= link_to "Delete", @user, :method => :delete %>
+    <% else %>
+      <% unless current_user == @user || current_user.friends_with?(@user) || current_user.friend_pending?(@user) || current_user.friend_request?(@user) %>
+      <i class="fi-torsos-all icons"></i>&ensp;<b><%= link_to 'Send Request', request_path(@user), method: :post %></b>
+      <% end %>
+    <% end %>
+  </div>  
+</div>
 
 
+<div class="row card" id="showFriends">
+  <div class="row">
+    <div class="col s10">
+      <h2 class="profileTitle">FRIENDS</h2><br>
+    </div>
+    <% if current_user == @user %>
+      <div class="col l3">
+        <div class="large reveal" id="modalRequests" data-reveal>
+          <h3>Friend Request </h3>
+          <% current_user.requested_friends.each do |q| %>
+            <ul>
+              <li><%= link_to q.first_name, "#{users/q.id}" %></li>
+            </ul>
+          <% end %>
+        </div>
+        <p><a data-open="modalRequests" style="line-height: 25px; font-size: 15px;">Friend Requests (<%= current_user.requested_friends.count %>)</a></p> 
+      </div>
+      <div class="col l3">
+        <div class="large reveal" id="modalPending" data-reveal>
+          <% current_user.pending_friends.each do |q| %>
+            <ul>
+              <li><%= link_to q.first_name, "#{q.id}" %></li>
+              <a href="/users/<%= q.id %>">Pending Friend </a>
+            </ul>
+          <% end %>
+        </div>
+        <p><a data-open="modalPending" style="line-height: 25px; font-size: 15px;">Pending Requests(<%= current_user.pending_friends.count %>)</a></p>
+      </div>
+    <% end %>
+  </div>  
+  <div class="row" id="showFriendsDiv">
+    <% @user.friends.each do |friend| %>
+      <div class="columns large-2">
+        <a href='/users/<%= friend.id %>'><img src="<%= friend.image_url %>" class="showUserImg" width="200px" ></a>
+        <a href="/users/<%= friend.id %>"><h6 style="text-align: center"><b><%= friend.first_name %></b></h6></a>
+      </div>
+    <% end %>
+  </div>  
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<div class="row card" id="showFriends">
 <div class="center-align">
     <div class="row">
         <div class="col s12">

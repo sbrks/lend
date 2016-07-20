@@ -15,10 +15,8 @@
     <%= f.label :availability %><br>
     <%= f.text_field :availability %>
   </div>
-    <div class="field">
-    <%= f.label :image_url %><br>
-    <%= f.text_field :image_url %>
-  </div>
+    <%= f.label "Image URL" %><br>
+      <%= f.hidden_field :image_url, placeholder: "Profile Photo", role: "uploadcare-uploader" %>
   <div class="actions">
     <%= f.submit "Save Changes" %>
   </div>
