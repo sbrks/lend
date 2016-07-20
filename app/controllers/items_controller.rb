@@ -81,7 +81,13 @@ class ItemsController < ApplicationController
 
   def borrow
     @item = Item.find(params[:id])
-    render :borrow
+    @items = Item.all
+    @offeredbyid = @item.user_id
+    @offeredby = User.find(@offeredbyid)
+    @image = @item.image_url
+    @user = current_user
+    params[:item][:user_id] = @user.id 
+    render :borrow 
   end
 
   private

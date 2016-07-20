@@ -13,22 +13,19 @@
       <div class="col s12">
         <h4><a href="/items/<%= @useritems.id %>/"> <%= @useritems.title %> </a></h4>
         <%= image_tag("#{@useritems.image_url}", :width => "250") %>
-          Posted <%= (time_ago_in_words(@useritems.created_at)) %> ago<br>
+          <p>Posted <%= (time_ago_in_words(@useritems.created_at)) %> ago</p>
+          <h5><%= @useritems.description %></h5>
           <div class="col s12">
           <%= link_to "Delete Item", {:controller => :items, :action => 'destroy', :id => @useritems.id }, :method => :delete, :class => "trash-btn" %></div>
 
           <div class="col s12">
           <a href="/items/<%= @useritems.id %>/edit">Edit Post</a>
+          <a href="/items/<%= @useritems.id %>/delete">Delete Post</a>
           </div>
       </div>
   </div>
 
    </div>
 
-
-
-
-
  </div> 
-
 

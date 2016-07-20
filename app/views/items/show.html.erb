@@ -11,11 +11,12 @@
               <h5><%= @item.description %></h5>
               <h5>Created at: <%= @item.created_at.strftime("%m/%d/%y") %></h5>
               <h5>Offered By: <a href="/users/<%= @offeredby.id %>" class="bluetext"><%= @offeredby.first_name %></a></h5>
+              <h5><a href="/users/<%= @offeredby.id %>">Send <%= @offeredby.first_name %> a Message</a></h5>
+
               <h5>Dates Available: <%= @item.availability %> </h5>
               <h5>Price: <%= @item.price %> per day </h5>
               <a class="btn itembutt" href="/items/<%= @item.id%>/borrow">BORROW</a>
             </div>
-
 
 
       <div class="card-footer">

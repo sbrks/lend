@@ -13,17 +13,19 @@ class UsersController < ApplicationController
 
   # GET /users/1
   def show
-  	@user = User.find(params[:id])
+    @user = User.find(params[:id])
     @user_id = session[:user_id]
 
     #unless @user.items != nil 
-      @useritems = @user.items.find(params[:id])
+    @useritems = @user.items.find(params[:id])
     #end
     @name = @user.email
     @items = Item.all
-  	render :show
-  end
+    render :show
 
+
+
+  end
   # GET /users/new
   def new
     @user = User.new
