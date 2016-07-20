@@ -1,7 +1,16 @@
+<div class="container">
 <div class="row">
-<br><br><br>
+
 <% if @current_user == @user %>
 <div class="container">
+
+<% if @current_user == @user %>
+        <h2>Welcome, <%= @current_user.first_name %></h2>
+        <%= button_to "Messages", conversations_path, class: "btn blue", method: :get %>
+      <% else %>
+      <h3><%= @user.first_name %>'s Profile</h3>
+        <% end %>
+  </div>
     <div class="row center-align">
         <div class="showbutts col s12 m6 l6">
           <a id="lendbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items/new">Lend Something</a>
@@ -10,34 +19,50 @@
         <a id="borrowbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items">Borrow Something</a>
       </div>
      </div>
-</div>
-
+</div> 
 <% end %>
-
-
-  <% if current_user.friend_request?(@user) %>
-    <%= button_to 'Accept', accept_path(@user), method: :post, class: 'button' %>
-    <%= button_to 'Decline', decline_path(@user), method: :post, class: 'button' %>
-  <% end %>
-  <% if current_user.friends_with?(@user) %>
-    <%= button_to 'Send Message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), class: 'button', method: :post %>
-    <%= button_to 'Remove', remove_path(@user), method: :post, class: 'button' %>
-  <% end %>
 </div>
 
 
-<div class="row">
+</div>
+</div>
+
+<div class="container">
+<div class="row card">
     <div class="col s6"><% if @current_user != @user  %>
     <h3><%= @user.first_name %>'s Profile</h3>
-        <% else %>
-        <h2>Welcome, <%= @current_user.first_name %></h2>
+
+      <% if current_user.friend_request?(@user) %>
+          <%= button_to 'Accept', accept_path(@user), method: :post, class: 'button' %>
+          <%= button_to 'Decline', decline_path(@user), method: :post, class: 'button' %>
+      <% end %>
+
+      <% if current_user.friends_with?(@user) %>
+        <!-- removed sendmessage/delete friends buttons -->
         <% end %>
-        <%= button_to "Messages", conversations_path, class: "btn blue", method: :get %>
-        <h5>Location: <%= @user.location %></h5>
-        <h5>Email: <%= @user.email %></h5>
-        <h5>Member since: <%= @user.created_at.strftime("%m/%d/%y") %></h5>
-        <h5>Rating: 5 Stars</h5>
-        <% if @current_user == @user %>
+        <% else %>
+          <h2>Welcome, <%= @current_user.first_name %></h2>
+          <%= button_to "Messages", conversations_path, class: "btn blue", method: :get %>
+        <% end %>
+          <h5>Location: <%= @user.location %></h5>
+          <h5>Email: <%= @user.email %></h5>
+          <h5>Member since: <%= @user.created_at.strftime("%m/%d/%y") %></h5>
+          <h5>Rating: 5 Stars</h5>
+
+          <div class="row">
+            <div class="col s12 center-align">
+                <% if current_user.friend_request?(@user) %>
+                  <%= button_to 'Accept', accept_path(@user), method: :post, class: 'button' %>
+                  <%= button_to 'Decline', decline_path(@user), method: :post, class: 'button' %>
+                <% end %>
+                <% if current_user.friends_with?(@user) %>
+                  <%= button_to 'Send Message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), class: 'btn red', method: :post %><br>
+                  <%= button_to 'Delete Friend', remove_path(@user), method: :post, class: 'btn red' %>
+                <% end %>
+            </div>
+          </div>
+
+          <% if @current_user == @user %>
             <div id="editbutton">
                 <a href="<%= edit_user_path(@user) %>">Edit Profile</a>
             </div>
@@ -47,29 +72,33 @@
             <br>
             <img src="<%= @user.image_url %>" width="300px" height="300px">
         </div>
-     </div>
 
-
-
-<div class="container">
-<% if @current_user != @user  %>
-<%= button_to 'Start a conversation', conversations_path, class: 'button', method: :get %>
-<% end %>
-
-<div class="row">
+<div class="col s6">
+     <% if @current_user != @user  %>
+      <%= button_to 'Start a conversation', conversations_path, class: 'btn blue', method: :get %>
+    <% end %>
   <% if current_user.friend_request?(@user) %>
-    <%= button_to 'Accept', accept_path(@user), method: :post, class: 'button' %>
-    <%= button_to 'Decline', decline_path(@user), method: :post, class: 'button' %>
+    <%= button_to 'Accept', accept_path(@user), method: :post, class: 'btn blue' %>
+    <%= button_to 'Decline', decline_path(@user), method: :post, class: 'btn blue' %>
   <% end %>
   <% if current_user.friends_with?(@user) %>
-    <%= button_to 'Send Message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), class: 'button', method: :post %>
-    <%= button_to 'Remove', remove_path(@user), method: :post, class: 'button' %>
+    <%= button_to 'Send Message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), class: 'btn blue', method: :post %>
+    <%= button_to 'Remove', remove_path(@user), method: :post, class: 'btn blue' %>
   <% end %>
+
+  <% if current_user == @user %>
+      <a href="/users/<%= @user.id %>/edit"><i class="fi-pencil icons"></i></a>
+      <i class="fi-trash icons"></i>&ensp;<%= link_to "", @user, :method => :delete %>
+    <% else %>
+      <% unless current_user == @user || current_user.friends_with?(@user) || current_user.friend_pending?(@user) || current_user.friend_request?(@user) %>
+      <i class="fi-torsos-all icons"></i>&ensp;<b><%= link_to 'Send Request', request_path(@user), method: :post %></b>
+      <% end %>
+    <% end %>
 </div>
 
 
 <div class="row">
-  <div class="col s12">&emsp;</div>
+  <div class="col s12">test test test;</div>
   <div class="col s8">
     <% if current_user == @user %>
       <a href="/users/<%= @user.id %>/edit"><i class="fi-pencil icons"></i></a>
@@ -80,40 +109,43 @@
       <% end %>
     <% end %>
   </div>
-  </div>  
+  </div> 
+
+
+</div>
 </div>
 
-
+<div class="container friends">
 <div class="row card" id="showFriends">
+<!-- FRIENDS row -->
   <div class="row">
     <div class="col s9">
       <h2 class="profileTitle">FRIENDS</h2><br>
       <div class="row" id="showFriendsDiv">
         <% @user.friends.each do |friend| %>
-      <div class="col s12">
       <ul>
         <li><a href='/users/<%= friend.id %>'><img src="<%= friend.image_url %>" class="showUserImg" width="200px" ></a></li>
         <li><a href="/users/<%= friend.id %>"><h6 style="text-align: center"><b><%= friend.first_name %></b></h6></a></li>
       </ul>
       </div>
+
     <% end %>
   </div>  
-    </div>
+  </div>
+  <!-- end friends row -->
+
+<!-- friends dashboard -->
+<div class="row">
     <% if current_user == @user %>
       <div class="col s3">
         <div class="large reveal" id="modalRequests" data-reveal>
           <h3>Friend Options</h3>
           <h4>Friend Requests</h4>
-          <% current_user.requested_friends.each do |q| %>
-            <ul>
-              <li><%= link_to q.first_name, "#{users/q.id}" %></li>
-            </ul>
-          <% end %>
+  <!-- removed friend request logic, see email --> 
       <div class="col s12">
         <a data-open="modalRequests" style="line-height: 25px; font-size: 15px;" href="#">Friend Requests (<%= current_user.requested_friends.count %>)</a>
+
         <p><a data-open="modalPending" style="line-height: 25px; font-size: 15px;" href="#">Pending Requests(<%= current_user.pending_friends.count %>)</a></p>
-
-
 
         <h4>Message a Friend</h4>
         <% current_user.friends.each do |user| %>
@@ -126,17 +158,35 @@
       </div>
       </div>
     <% end %>
+    </div>
+    <!-- end friends dashboard -->
+    </div>
 </div>
-</div>
-<div class="row card" id="showFriends">
-<div class="center-align">
-    <div class="row">
+
+<!-- stuff div -->
+<div class="container">
+<div class="row card">
         <div class="col s12">
         <% @items.each do |item| %>
         <% if @user.id  == item.user_id %>
- 	      <%= render "items" %>
+        <%= render "items" %>
           <% end %>
         <% end %>
         </div>
     </div>
 </div>
+</div>
+<!-- end stuff div -->
+
+<% if @current_user == @user %>
+  <div class="container">
+    <div class="row center-align">
+        <div class="showbutts col s12 m6 l6">
+          <a id="lendbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items/new">Lend Something</a>
+        </div>
+      <div class="col s12 m6 l6">
+        <a id="borrowbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items">Borrow Something</a>
+      </div>
+     </div>
+</div>
+<% end %>

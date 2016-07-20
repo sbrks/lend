@@ -1,12 +1,17 @@
 <div class="container">
 <div class="row">
 
-            <h2><a href="/users/<%= @offeredby.id %>" class="red">Request to Borrow from <%= @offeredby.first_name %></a> </h2>
+        <div class="requestLink">
+        <% if @user.id != @offeredbyid %>
+            <h4><a href="/users/<%= @offeredby.id %>">Send <%= @offeredby.first_name %> a Message to Request to Borrow</a> </h4>
+          <% end %>
+        </div>
 
+        <div class="card">
             <div class="card-header">
               <%= image_tag("#{@item.image_url}", :width => "400") %>
             </div>
-        
+            <div class="card-content">
               <%= @item.title %></h4>
               <h5><%= @item.description %></h5>
               <h5>Created at: <%= @item.created_at.strftime("%m/%d/%y") %> </h5>
@@ -15,7 +20,8 @@
               <h5>Dates Available: <%= @item.availability %> </h5>
               <h5>Price: <%= @item.price %> per day </h5>
             </div>
-          
+            </div>
+          </div>
           <% if @current_user != @user  %>
             <%= link_to 'Show', @item %>
             <%= link_to 'Edit', edit_item_path(@item) %>
