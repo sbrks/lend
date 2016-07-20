@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create'
   delete '/sessions', to: 'sessions#destroy'
 
+#conversation/message routes
+  resources :conversations do
+    resources :messages
+  end
 
   # handles all unknown requests and sends them home
   get "*path" => "items#index"

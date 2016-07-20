@@ -28,6 +28,21 @@
      </div>
 </div>
 
+<div class="container">
+<%= button_to 'Start a conversation', new_message_path, class: 'button', method: :get %>
+
+<br><br><br>
+<div class="row">
+
+    <%= button_to 'Send Message', conversations_path(sender_id: current_user.id, recipient_id: @user.id), class: 'button', method: :post %>
+    <%= button_to 'Remove', remove_path(@user), method: :post, class: 'button' %>
+
+</div>
+</div>
+
+
+
+
 <div class="center-align">
     <div class="row">
         <div class="col s12">
