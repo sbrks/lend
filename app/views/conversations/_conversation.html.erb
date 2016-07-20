@@ -6,7 +6,8 @@
   </div>
   <div class="media-body">
     <h4 class="media-heading">
-      <%= conversation.originator.first_name %> <br>
+      <%= conversation.originator.name %> <br>
+      <%= @user.messages %> <br>
       <small><b>Subject: </b><%= conversation.subject %></small><br>
       <small><b>Date: </b><%=  conversation.messages.last.created_at.strftime("%A, %b %d, %Y at %I:%M%p") %></small>
     </h4>

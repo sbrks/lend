@@ -2,10 +2,9 @@ class User < ActiveRecord::Base
 
 	has_secure_password
 
-
 	acts_as_messageable
 
-	searchkick
+	# searchkick
 
 	has_many :items
 
@@ -30,7 +29,7 @@ class User < ActiveRecord::Base
 	end
 
 	  def mailboxer_name
-    	self.first_name
+    	self.name
   		end
 
   		def mailboxer_email(object)
