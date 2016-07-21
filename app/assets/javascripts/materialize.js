@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('.parallax').parallax();
   $('.slider').slider({
     full_width: true,
-    height: 200,
+    height: 250,
     transition: 200,
     interval: 1500
     });

@@ -1,10 +1,11 @@
-<div class="media">
+<div class="media newitem">
   <div class="media-left">
     <a href="#">
       <img class="media-object" src="http://placehold.it/64x64" alt="...">
     </a>
   </div>
   <div class="media-body">
+  <div class="newitem">
     <h4 class="media-heading">
       <%= conversation.originator.name %> <br>
       <%= @user.messages %> <br>
@@ -14,4 +15,5 @@
     <%= truncate conversation.messages.last.body, length: 145 %>
     <%= link_to "View", conversation_path(conversation)  %>
   </div>
+</div>
 </div>

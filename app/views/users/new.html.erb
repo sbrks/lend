@@ -1,15 +1,21 @@
-<h1>Sign Up</h1>
+<div class="row center-align">
+	<div class="col s8 offset-s2">
+		<div class="newitem">
+			<h2>Sign Up</h2>
 
-<%= form_for @user do |f| %>
+			<%= form_for @user do |f| %>
 
-	First Name:<%= f.text_field :first_name, required: true %>
-	Last Name:<%= f.text_field :last_name %>
-	Email:<%= f.text_field :email, required: true %>
-	Password:<%= f.password_field :password, required: true %>
-	Password Confirmation:<%= f.password_field :password_confirmation %>
-	Location:<%= f.text_field :location %>
-	Add an image or video of exercise
-  <%= f.hidden_field :image_url, placeholder: "Profile Photo", role: "uploadcare-uploader" %>
-	<%= f.submit "Submit" %>
+			First Name:<%= f.text_field :first_name, required: true %>
+			Last Name:<%= f.text_field :last_name %>
+			Email:<%= f.text_field :email, required: true %>
+			Password:<%= f.password_field :password, required: true %>
+			Password Confirmation:<%= f.password_field :password_confirmation %>
+			Location:<%= f.text_field :location %>
+			Add an image or video of exercise
+		  <%= f.hidden_field :image_url, placeholder: "Profile Photo", role: "uploadcare-uploader" %>
+			<%= f.submit "Submit" %>
 
 <% end %>
+		</div>
+	</div>
+</div>

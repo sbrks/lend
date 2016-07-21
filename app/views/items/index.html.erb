@@ -1,7 +1,11 @@
 <p id="notice"><%= notice %></p>
+
 <div class='container center-align'>
 <h3>All Items</h3>
+</div>
 
+
+<div class="container center-align">
 <div class="editprof waves-effect waves-light red lighten-1 btn"><%= link_to 'Add New Item', new_item_path %></div>
 <br><br>
 <!-- search form -->
@@ -14,35 +18,18 @@
           <%= submit_tag "Search", class: 'btn btn-primary blue' %>
           <% end %>
       </fieldset>
-          <% if @items.present? %>
-            <%= render "items" %>
-          <% else %>
-            <p>There are no items containing the term(s) <%= params[:search] %>.</p>
-          <% end %>
-    </div>
+      </div>
   </div>
-<!-- end search form --> 
-</div>
 </div>
 
-<div class="container">
-<% @items.each do |item| %>
-    <div class="row">
-<div class="col s12 m6 l6">
-  <ul class="img-list">
-    <li>
-      <img src="<%= item.image_url %>" width="400px" height="325px" />
-      <span class="text-content">
-        <span><%= item.title %><br><br><br>
-        <a class="btn itembutt" href="/items/<%= item.id %>">See More</a>
-        </span>
-        </span>
-      </a>
-    </li>
-  </ul>
-  </div>
-  <% end %>
+    <% if @items.present? %>
+     <%= render "items" %>
+     <% else %>
+      <h5>There are no items containing the term(s) <%= params[:search] %>.</h5>
+    <% end %>
+
 </div>
-</div>
+<!-- end search form --> 
+
 
 

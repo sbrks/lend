@@ -2,19 +2,18 @@ class ItemsController < ApplicationController
 
   before_action :require_login, except: [:index, :show]
 
-   before_filter :validate_user, :only => [:edit, :update, :destroy]
+  before_filter :validate_user, :only => [:edit, :update, :destroy]
 
 
   # GET /items
   def index
-
   @items = Item.all
-  if params[:search]
-    @items = Item.search(params[:search]).order("created_at DESC")
-  else
-    @posts = Post.all.order("created_at DESC")
+    if params[:search]
+      @items = Item.search(params[:search]).order("created_at DESC")
+    else
+      @items = Item.all.order("created_at DESC")
+    end
   end
-end
 
   # GET /items/1
   def show

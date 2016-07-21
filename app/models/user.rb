@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   	scope :location, -> (location) { where location: location}
   	scope :title, -> (title) { where("title like ?", "#{title}%")}
 
-	searchkick
 
 	has_many :items
 

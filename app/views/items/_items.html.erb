@@ -1,0 +1,18 @@
+
+<% @items.each do |item| %>
+<div class="row">
+<div class="col s12 m6 l6">
+  <ul class="img-list">
+    <li>
+      <img src="<%= item.image_url %>" width="400px" height="325px" />
+      <span class="text-content">
+        <span><%= item.title %><br><br><br>
+        <a class="btn itembutt" href="/items/<%= item.id %>">See More</a>
+        </span>
+        </span>
+      </a>
+    </li>
+  </ul>
+</div>
+<% end %>
+</div>

@@ -38,8 +38,6 @@
 </div> 
 <% end %>
 </div>
-
-
 </div>
 </div>
 
@@ -86,9 +84,8 @@
 
 <div class="col s6">
      <% if @current_user != @user  %>
-      <%= button_to 'Start a conversation', conversations_path, class: 'btn blue', method: :get %>
+    <div class="btn blue sendrequest"><%= link_to 'Message', conversations_path, method: :get %></div></b>
     <% end %>
-  
 <!-- deleted blue friend delete etc buttons, see email 2 -->
 
   <% if current_user == @user %>
@@ -97,40 +94,50 @@
     <% else %>
       <% unless current_user == @user || current_user.friends_with?(@user) || current_user.friend_pending?(@user) || current_user.friend_request?(@user) %>
       <i class="fi-torsos-all icons"></i>&ensp;<b>
-      <div class="btn"><%= link_to 'Send Request', request_path(@user), method: :post %></div></b>
+      <div class="btn blue sendrequest"><%= link_to 'Send Request', request_path(@user), method: :post %></div></b>
       <% end %>
     <% end %>
 </div>
-
-
 </div>
 </div>
+
+
+<div class="container" id="friends">
+<div class="row card" id="showFriends">
+  <br> <h2 class="profileTitle">FRIENDS</h2><br>
+<% @user.friends.each do |friend| %>
+<div class="row">
+<div class="col s12 m6 l6">
+  <ul class="img-list">
+    <li>
+      <img src="<%= friend.image_url %>" width="400px" height="325px" />
+      <span class="text-content">
+        <span><%= friend.first_name %><br><br><br>
+        <a class="btn itembutt" href="/users/<%= friend.id %>">See More</a>
+        </span>
+        </span>
+      </a>
+    </li>
+  </ul>
+</div>
+<% end %>
+</div>
+</div>
+</div>
+
+
+
 
 <div class="container friends" id="friends">
 <div class="row card" id="showFriends">
-<!-- FRIENDS row -->
- <div class="col s8">
-   <h2 class="profileTitle">FRIENDS</h2><br>
-   
-      <div class="row" id="showFriendsDiv">
-        <% @user.friends.each do |friend| %>
-      <ul>
-        <li><a href='/users/<%= friend.id %>'><img src="<%= friend.image_url %>" class="showUserImg" width="200px" ></a></li>
-        <li><a href="/users/<%= friend.id %>"><h6 style="text-align: center"><b><%= friend.first_name %></b></h6></a></li>
-      </ul>
-      </div>
-    <% end %>
-
-
     <% if current_user == @user %>
-      <div class="col s4">
+      <div class="col s12">
           <h3>Manage Requests</h3>
           <h4>Friend Requests</h4>
   <!-- removed friend request logic, see email --> 
-        <a data-open="modalRequests" style="line-height: 25px; font-size: 15px;" href="#">Friend Requests (<%= current_user.requested_friends.count %>)</a>
+        <a style="line-height: 25px; font-size: 15px;" href="#">Friend Requests (<%= current_user.requested_friends.count %>)</a>
 
-
-        <p><a data-open="modalPending" style="line-height: 25px; font-size: 15px;" href="#">Pending Requests(<%= current_user.pending_friends.count %>)</a></p>
+        <p><a style="line-height: 25px; font-size: 15px;" href="#">Pending Requests(<%= current_user.pending_friends.count %>)</a></p>
 
         <h4>Message a Friend</h4>
         <% current_user.friends.each do |user| %>
@@ -139,27 +146,24 @@
         <% end %>
       <% end %>
 
-    
-
     <% if current_user.friends_with?(@user) %>
           <% current_user.requested_friends.each do |q| %>
             <ul>
-            <h5><%= q.first_name %></h5>
-            <h5><%= q.location %></h5>
-            <img src="<%=  q.image_url %>" width="100px">
+              <li><h5><%= q.first_name %></h5></li>
+              <li><h5><%= q.location %></h5></li>
+              <li><img src="<%=  q.image_url %>" width="100px"></li>
             </ul>
           <% end %>
         <!-- removed sendmessage/delete friends buttons -->
         <% end %>
-
-
-      </div>
-      </div>
     <% end %>
-    </div>
 
+      </div>
+      </div>
+</div>
+</div>
+</div>
 
-  </div>
   <!-- end friends row -->
 
 <!-- end friends dashboard -->

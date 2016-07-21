@@ -36,7 +36,6 @@ gem 'materialize-sass'
 
 gem 'geocoder'
 
-gem 'searchkick'
 
 gem 'has_friendship'
 
