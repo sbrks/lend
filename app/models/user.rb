@@ -30,7 +30,12 @@ class User < ActiveRecord::Base
 	# reverse_geocoded_by :latitude, :longitude, :address => :location
 
 	# after_validation :geocode
-
+ def self.search(text)
+   query = "%#{text}%"
+   if text.present?
+     return where("vision LIKE ?", query)
+   end
+ end
 
 	BCrypt::Engine.cost = 12
 
