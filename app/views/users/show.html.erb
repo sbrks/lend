@@ -3,21 +3,26 @@
 
 <% if @current_user == @user %>
 <div class="container">
-
+<div class="row">
 <% if @current_user == @user %>
         <h2>Welcome, <%= @current_user.first_name %></h2>
-        <%= button_to "Messages", conversations_path, class: "btn blue", method: :get %>
       <% else %>
       <h3><%= @user.first_name %>'s Profile</h3>
         <% end %>
   </div>
-    <div class="row center-align">
-        <div class="showbutts col s12 m6 l6">
-          <a id="lendbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items/new">Lend Something</a>
+    <div class="row profileButtons">
+        <div class="col s12 m4 l4">
+        <a class="waves-effect waves-light btn blue darken-1 white-text" href="<%= conversations_path %>">Messages</a>
         </div>
-      <div class="col s12 m6 l6">
-        <a id="borrowbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items">Borrow Something</a>
+
+        <div class="col s12 m4 l4">
+          <a class="waves-effect waves-light btn blue darken-1 white-text" href="/items/new">Lend Something</a>
+        </div>
+
+      <div class="col s12 m4 l4">
+        <a class="waves-effect waves-light btn blue darken-1 white-text" href="/items">Borrow Something</a>
       </div>
+
      </div>
 </div> 
 <% end %>
@@ -41,7 +46,7 @@
         <!-- removed sendmessage/delete friends buttons -->
         <% end %>
         <% else %>
-          <h2>Welcome, <%= @current_user.first_name %></h2>
+          <h2><%= @current_user.first_name %></h2>
           <%= button_to "Messages", conversations_path, class: "btn blue", method: :get %>
         <% end %>
           <h5>Location: <%= @user.location %></h5>
@@ -119,8 +124,8 @@
 <div class="row card" id="showFriends">
 <!-- FRIENDS row -->
   <div class="row">
+   <h2 class="profileTitle">FRIENDS</h2><br>
     <div class="col s9">
-      <h2 class="profileTitle">FRIENDS</h2><br>
       <div class="row" id="showFriendsDiv">
         <% @user.friends.each do |friend| %>
       <ul>
@@ -131,6 +136,7 @@
 
     <% end %>
   </div>  
+  </div>
   </div>
   <!-- end friends row -->
 
@@ -165,8 +171,8 @@
 
 <!-- stuff div -->
 <div class="container">
-<div class="row card">
-        <div class="col s12">
+  <div class="row card">
+      <div class="col s12">
         <% @items.each do |item| %>
         <% if @user.id  == item.user_id %>
         <%= render "items" %>
@@ -175,7 +181,7 @@
         </div>
     </div>
 </div>
-</div>
+
 <!-- end stuff div -->
 
 <% if @current_user == @user %>
