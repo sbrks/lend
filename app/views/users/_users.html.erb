@@ -1,0 +1,18 @@
+
+<% @users.each do |user| %>
+<div class="row center-align">
+<div class="col s12">
+  <ul class="img-list center-align">
+    <li class="center-align">
+      <img src="<%= user.image_url %>" width="400px" height="325px" />
+      <span class="text-content">
+        <span><%= user.first_name %><br><br><br>
+        <a class="btn itembutt" href="/users/<%= user.id %>">See More</a>
+        </span>
+      </span>
+      </a>
+    </li>
+  </ul>
+</div>
+<% end %>
+</div>

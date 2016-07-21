@@ -37,7 +37,7 @@ nav a{
 
 #logo {
   font-family: 'Bree Serif', serif;
-  font-size: 44px;
+  font-size: 48px;
 
 }
 
@@ -56,13 +56,15 @@ nav a{
 }
 
 ul.img-list {
-padding:10px;
-width: 100%;
+  list-style-type: none;
+  margin: 0;
+  padding: 10px;
+  text-align: center;
 }
 
 ul.img-list li {
-	display: inline-block;
-	height: 100px;
+	 display: inline-block;
+	 height: 100px;
   	margin: 0 1em 1em 0;
   	position: relative;
   	width: 300px;
@@ -70,17 +72,10 @@ ul.img-list li {
 
 ul.img-list li:hover { 
   transform: scale(1.1);
+
 }
 
-ul.friends-list li img {
-  display: inline-block;
-  height: 250px;
-  position: relative;
-  width: 250px;
-}
-
-
-ul.friends-list li:hover span.friend-content {
+ul.img-list li:hover span.text-content {
   opacity: 1;
 }
 
@@ -104,6 +99,15 @@ span.text-content {
   transition: opacity 500ms;
 }
 
+
+span.text-content button {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+
 span.friend-content {
   background: rgba(0,0,0,0.5);
   font-size: 40px;
@@ -125,12 +129,15 @@ span.friend-content {
   transition: opacity 500ms;
 }
 
+ul.friends-list li img {
+  display: inline-block;
+  height: 250px;
+  position: relative;
+  width: 250px;
+}
 
-span.text-content span {
-  display: table-cell;
-  text-align: center;
-  vertical-align: middle;
-
+ul.img-list li:hover span.friend-content {
+  opacity: 1;
 }
 
 span.friend-content span {
@@ -238,6 +245,7 @@ a.btn.itembutt {
   color: white;
   font-size: 24px;
 }
+
 
 a.btn.itembutt:hover{
   transform: scale(1.07);

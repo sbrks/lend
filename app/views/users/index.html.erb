@@ -1,13 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing users</h1>
+<div class="container">
+
+
+<div class="form-group center-align" style="background-color: white">
+    <div class="form-control">
+      <fieldset>
+        <label>Search for a User:</label>
+          <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+          <%= text_field_tag :search, params[:search], placeholder: "Search" %>
+          <%= submit_tag "Search", class: 'btn btn-primary blue' %>
+          <% end %>
+      </fieldset>
+      </div>
+  </div>
+</div>
+    <% if @users.present? %>
+     <%= render "users" %>
+     <% else %>
+      <h5>There are no users containing the term(s) <%= params[:search] %>.</h5>
+    <% end %>
+</div>
+
+
+
+<h1 style="text-align: center">All Users</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Username</th>
-      <th>ID</th>
+      <th></th>
+      <th>First Name</th>
       <th>Location</th>
+      <th>Profile</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,12 +40,11 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
-        <td><%= user.id %></td>
+        <td><img src="<%= user.image_url %>" width="100px" height="110px"</td>
+        <td><%= user.first_name %></td>
         <td><%= user.location %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Delete', user, method: :destroy, data: { confirm: 'Are you sure?' } %></td>
+        <td class="btn blue" style="margin-top:50px"><%= link_to 'Profile', user, style:"color:white" %></td>
+
       </tr>
     <% end %>
   </tbody>
@@ -29,3 +53,5 @@
 <br>
 
 <%= link_to 'New user', new_user_path %>
+</div>
+</div>

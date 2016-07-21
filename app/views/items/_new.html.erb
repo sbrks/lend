@@ -13,10 +13,11 @@
   </div>
 
   <div class="field">
-    <%= f.label "Price Per Day" %><br>
+    <%= f.label "Availability" %><br>
     <%= f.text_field :availability %>
   </div>
-  <%=f.hidden_field :user_id, :value => @user%>
+
+  <%=f.hidden_field :user_id, :value => @user %>
 
      <div class="field">
     <%= f.label "Upload Image" %><br>

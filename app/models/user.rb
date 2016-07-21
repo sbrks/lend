@@ -1,13 +1,22 @@
 class User < ActiveRecord::Base
 
-	scope :availability, -> (availability) { where availability: availability}
-  	scope :location, -> (location) { where location: location}
-  	scope :title, -> (title) { where("title like ?", "#{title}%")}
-
-
 	has_many :items
 
 	has_friendship
+
+	def self.search(search)
+   		where(
+   			"first_name ILIKE ? OR 
+ 			last_name ILIKE ? OR
+ 			location ILIKE ? OR
+ 			email ILIKE ?",
+ 			"%#{search}%",
+ 			"%#{search}%",
+ 			"%#{search}%",
+ 			"%#{search}%"
+ 		)
+ 	end
+
 
 #friendship methods
 	def friend_request?(user)
@@ -31,14 +40,6 @@ class User < ActiveRecord::Base
 	# acts_as_mappable
 
 	# reverse_geocoded_by :latitude, :longitude, :address => :location
-
-	# after_validation :geocode
- def self.search(text)
-   query = "%#{text}%"
-   if text.present?
-     return where("vision LIKE ?", query)
-   end
- end
 
 	BCrypt::Engine.cost = 12
 

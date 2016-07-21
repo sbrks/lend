@@ -97,6 +97,9 @@
       <div class="btn blue sendrequest"><%= link_to 'Send Request', request_path(@user), method: :post %></div></b>
       <% end %>
     <% end %>
+    <br>
+    <br>
+    <br>
 </div>
 </div>
 </div>
@@ -105,6 +108,9 @@
 <div class="container" id="friends">
 <div class="row card" id="showFriends">
   <br> <h2 class="profileTitle">FRIENDS</h2><br>
+  <div class="col s12 center-align">
+        <%= button_to "Find Users", users_path, method: :get, class: "btn blue" %>
+      </div><br><br><br>
 <% @user.friends.each do |friend| %>
 <div class="row">
 <div class="col s12 m6 l6">
@@ -113,7 +119,7 @@
       <img src="<%= friend.image_url %>"/>
       <span class="friend-content">
         <span><%= friend.first_name %><br><br><br>
-        <a class="btn itembutt" href="/users/<%= friend.id %>">See More</a>
+        <a class="btn itembutt" href="/users/<%= friend.id %>">Select</a>
         </span>
         </span>
       </a>
@@ -124,8 +130,6 @@
 </div>
 </div>
 </div>
-
-
 
 
 <div class="container friends" id="friends">
@@ -165,7 +169,6 @@
 </div>
 
   <!-- end friends row -->
-
 <!-- end friends dashboard -->
 
 
