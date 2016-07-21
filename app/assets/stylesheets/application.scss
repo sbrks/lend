@@ -293,18 +293,24 @@ a.btn.itembutt:hover{
 color: red;
 }
 
-.requestLink a:hover {
-  color: blue;
-  background-color: white;
-}
 
 
 .card-content a:hover {
-  background-color: white;
-  color: blue;
   transform: scale(1.07);
 }
 
+.profileButtons {
+  padding: 5px;
+}
+
+.homebuttons {
+  margin-bottom: 8px;
+}
+.profileButtons a{
+  width: 240px;
+  margin: 0 auto;
+
+}
 .profileButtons a:hover {
   transform: scale(1.07);
 }

@@ -1,12 +1,13 @@
 <div class="container">
+<div class="newitem">
   <% if @over_ten %>
     <%= button_to 'Show Previous', '?m=all', class: 'button' %>
   <% end %>
 
   <% if current_user.id == @sender.id %>
-    <h3><i class="fi-flag"></i> Your Conversation with <%= @recipient.first_name %></h3>
+    <h3>Your Conversation with <%= @recipient.first_name %></h3>
   <% else %>
-    <h3>Your Conversation with <%= @sender.first_name %></h3>
+    <h3 style="text-align:center; padding-top:30px">Conversation with <%= @sender.first_name %></h3>
   <% end %>
 
   <div class='ui segment'>
@@ -14,12 +15,12 @@
     <% if message.body %>
       <% user = User.find(message.user_id) %>
       <div class='item'>
-      <div class='content'>
-        <div class='header'><strong><%= user.first_name %></strong>     <%= message.message_time %></div>
+      <div class='content' style="padding-left:80px;">
+        <div class='header'><strong><p style="color:#ff1744; font-size:16px"><%= user.first_name %>    <%= message.message_time %></strong> </p></div>
         <div class='list'>
           <div class='item'>
-            <i class='right triangle icon'></i>
-            <%= message.body %><br>
+          <div class='header'><strong><p style="color:black; font-size:18px">
+            <%= message.body %></p></strong>
             <br>
         </div>
       </div>
@@ -29,15 +30,15 @@
   <% end %>
   </div>
 
-  <%= form_for [@conversation, @message], html: {class: 'ui reply form'} do |f| %>
+  <%= form_for [@conversation, @message], html: {class: 'center-align', style: 'padding: 25px'} do |f| %>
     <div class='field'>
       <%= f.text_area :body, class: 'form-control', placeholder: 'Type a Message' %>
     </div>
     <%= f.text_field :user_id, value: current_user.id, type: 'hidden' %>
     <div>
-      <%= f.submit 'Send', class: 'ui blue labeled submit icon button' %>
+      <%= f.submit 'Send', class: 'labeled submit btn red accent-3' %>
     </div>
 
   <% end %>
-
+</div>
 </div>

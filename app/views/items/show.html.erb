@@ -2,9 +2,9 @@
 
 <div class="row">
       <div class="col s12">
-        <div class="card hoverable indigo darken-1">
+        <div class="card hoverable">
             <div class="card-header">
-            <%= image_tag("#{@item.image_url}", :width => "400") %>
+            <%= image_tag("#{@item.image_url}", :width => "450") %>
             </div>
 
 
@@ -12,7 +12,7 @@
             
 
               <% if @user.first_name == @offeredby.first_name %>
-                <h5 style="color:red">Thanks for posting your <%= @item.title %>, <%= @user.first_name %>!</h5>
+                <h5 style="color:#ff1744">Thanks for posting your <%= @item.title %>, <%= @user.first_name %>!</h5>
                   <h4><%= @item.title %></h4>
               <% else %>
                 <h4><%= @item.title %></h4>
