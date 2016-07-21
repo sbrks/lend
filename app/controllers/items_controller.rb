@@ -7,21 +7,14 @@ class ItemsController < ApplicationController
 
   # GET /items
   def index
-    if params[:query].present?
-      # @items = Item.search(params[:query], page: params[:page])
-      @query = params[:search]
-      @items = Item.search(@query)
-    else
-      @items = Item.all.order("id DESC")
-        # @user = User.find(params[:id])
-      params[:items][:user_id] =  @user
-    # @user = Item.find_by_id(params[:user_id]
-    end
-  end
 
-  # def search_params
-  #   params.permit :page, :per_page, :sort_attribute, :sort_order, :location
-  # end
+  @items = Item.all
+  if params[:search]
+    @items = Item.search(params[:search]).order("created_at DESC")
+  else
+    @posts = Post.all.order("created_at DESC")
+  end
+end
 
   # GET /items/1
   def show
@@ -101,6 +94,5 @@ class ItemsController < ApplicationController
     def validate_user
       redirect_to root_path unless current_user.id.to_s == params[:id]
     end
-
 
 end
