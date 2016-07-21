@@ -16,16 +16,35 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @user_id = session[:user_id]
 
-    #unless @user.items != nil 
-    @useritems = @user.items.find(params[:id])
-    #end
+    unless @user.items != []
+      @useritems = @user.items.find(params[:id])
+    end
     @name = @user.email
     @items = Item.all
     render :show
 
 
+    # if @user.items === []
+    #   render :show
+    # else
+    #   @offeredbyid = @item.user_id
+    #   #3 - item 4, user_id is 3 - returns an item id
 
+    #   @offeredby = User.find(@offeredbyid)
+    #   #offered by user 3 - returns a user
+
+    #   @offeredbyitems = @offeredby.items
+
+    #    @user = current_user
+    #   # params[:item][:user_id] = @user.id
+    # end
+
+    # @name = @user.email
+    # @items = Item.all
   end
+
+
+
   # GET /users/new
   def new
     @user = User.new

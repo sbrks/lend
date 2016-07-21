@@ -6,13 +6,20 @@
             <div class="card-header">
             <%= image_tag("#{@item.image_url}", :width => "400") %>
             </div>
+
+
           <div class="card-content" style="background-color:white">
               <h4><%= @item.title %></h4>
-              <h5><%= @item.description %></h5>
-              <h5>Created at: <%= @item.created_at.strftime("%m/%d/%y") %></h5>
-              <h5>Offered By: <a href="/users/<%= @offeredby.id %>" class="bluetext"><%= @offeredby.first_name %></a></h5>
-              <h5><a href="/users/<%= @offeredby.id %>">Send <%= @offeredby.first_name %> a Message</a></h5>
 
+              <% if @user.first_name == @offeredby.first_name %>
+                <h5 style="color:red">Thanks for posting your <%= @item.title %>, <%= @user.first_name %>! </h5>
+              <% else %>
+                  <h5>Offered By: <a href="/users/<%= @offeredby.id %>" class="bluetext"><%= @offeredby.first_name %></a></h5>
+                  <h5><a href="/users/<%= @offeredby.id %>">Send <%= @offeredby.first_name %> a Message</a></h5>
+              <% end %>
+
+              <h5><%= @item.description %></h5>
+              <h5>Posted: <%= @item.created_at.strftime("%m/%d/%y") %></h5>
               <h5>Dates Available: <%= @item.availability %> </h5>
               <h5>Price: <%= @item.price %> per day </h5>
               <a class="btn itembutt" href="/items/<%= @item.id%>/borrow">BORROW</a>
@@ -21,11 +28,10 @@
 
       <div class="card-footer">
          <div class="card-action">
-         <% if current_user === @item.user_id %>
-            <%= link_to 'Show', @item %>
-            <%= link_to 'Edit', edit_item_path(@item) %>
-            <%= link_to 'Destroy', @item, method: :delete, data: { confirm: 'Are you sure?' } %>
-            <%= link_to 'Back', items_path %>
+       <% if @user.first_name == @offeredby.first_name %>
+            <%= link_to 'Edit Item', edit_item_path(@item) %>
+            <%= link_to 'Delete Item', @item, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <%= link_to 'All Items', items_path %>
           <%end%>
           </div>
         </div>

@@ -1,22 +1,26 @@
-
 <% if @current_user != @user  %>
 <h3><%= @user.first_name %>'s Stuff</h3>
 <% else %>
 <h3> My Stuff</h3>
 <% end %>
 
-   <div class="row">
-      <div class="col s12">
-        <h4><a href="/items/<%= @useritems.id %>/"> <%= @useritems.title %> </a></h4>
-        <%= image_tag("#{@useritems.image_url}", :width => "250") %>
-          <p>Posted <%= (time_ago_in_words(@useritems.created_at)) %> ago</p>
-          <h5><%= @useritems.description %></h5>
-          <div class="col s12">
-          <%= link_to "Delete Item", {:controller => :items, :action => 'destroy', :id => @useritems.id }, :method => :delete, :class => "trash-btn" %></div>
+  <% if @current_user.items != [] %>
+<% @user.items.each do |useritem| %>
+<div class="row">
+<div class="col s12">
+ <h4><a href="/items/<%= useritem.id %>/"> <%= useritem.title %> </a></h4>
+  <%= image_tag("#{useritem.image_url}", :width => "250") %>
+<h6>Daily Price: <%= useritem.price %></h6>
+<h6>Availability: <%= useritem.availability %></h6>
+<h6><%= useritem.description %></h6>
+<% if @current_user.id == useritem.user_id %>
+  <a href="/items/<%= useritem.id %>/edit" class="btn white-text">Edit Post</a>
+  <a href="/items/<%= useritem.id %>/delete" class="btn white-text">Delete Post</a>
+  <% end %>
+<% end %>
+<% end %>
 
-          <div class="col s12">
-          <a href="/items/<%= @useritems.id %>/edit">Edit Post</a>
-          <a href="/items/<%= @useritems.id %>/delete">Delete Post</a>
-          </div>
-      </div>
-  </div>
+
+          
+</div>
+</div>

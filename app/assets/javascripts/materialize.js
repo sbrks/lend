@@ -2,14 +2,17 @@ $(document).ready(function() {
   $('select').material_select();
   $('.modal-trigger').leanModal();
   $('.parallax').parallax();
-
+  $('.slider').slider({
+    full_width: true,
+    height: 200,
+    transition: 200,
+    interval: 1500
+    });
 
   $('.materialboxed').hover(
   function() { $(this).addClass('hover') },
   function() { $(this).removeClass('hover') } 
   );
-
-
 
 
 
