@@ -14,8 +14,8 @@
 <h6>Availability: <%= useritem.availability %></h6>
 <h6><%= useritem.description %></h6>
 <% if @current_user.id == useritem.user_id %>
-  <a href="/items/<%= useritem.id %>/edit" class="btn white-text">Edit Post</a>
-  <a href="/items/<%= useritem.id %>/delete" class="btn white-text">Delete Post</a>
+  <a href="/items/<%= useritem.id %>/edit" class="btn white-text">Edit Item</a>
+  <a href="/items/<%= useritem.id %>/delete" class="btn white-text">Delete Item</a>
   <% end %>
 <% end %>
 <% end %>

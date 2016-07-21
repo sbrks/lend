@@ -9,7 +9,8 @@ class ItemsController < ApplicationController
   def index
     if params[:query].present?
       # @items = Item.search(params[:query], page: params[:page])
-      @items = Item.search(params[:query])
+      @query = params[:search]
+      @items = Item.search(@query)
     else
       @items = Item.all.order("id DESC")
         # @user = User.find(params[:id])
@@ -18,9 +19,9 @@ class ItemsController < ApplicationController
     end
   end
 
-  def search_params
-    params.permit :page, :per_page, :sort_attribute, :sort_order, :location
-  end
+  # def search_params
+  #   params.permit :page, :per_page, :sort_attribute, :sort_order, :location
+  # end
 
   # GET /items/1
   def show

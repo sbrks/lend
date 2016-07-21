@@ -17,18 +17,24 @@
 
 
  *  {
-	    font-family: Lato;
+	    font-family: 'Montserrat', sans-serif;
      
  }
 
- .container {
+nav a{
+  font-family: 'Rubik', sans-serif;
+}
 
- }
+#logo {
+  font-family: 'Bree Serif', serif;
+  font-size: 44px;
+
+}
 
  body {
   background: #f6f6f6;
       background-image: url("http://www.webdesigndev.com/wp-content/uploads/2013/06/Subtle-Grey-Tileable-Pattern.jpg");
- }
+      }
 
  .parallax-container {
  	height: 400px;
@@ -243,4 +249,13 @@ color: red;
 
 .profileButtons a:hover {
   transform: scale(1.07);
+}
+
+@font-face {
+    font-family: 'HDVPeace';
+    src: font-url('/assets/HDV_Peace.eot');
+    src: font-url('/assets/HDV_Peace.eot?iefix') format('eot'),
+        font-url('/assets/HDV_Peace.woff') format('woff'),
+        font-url('/assets/HDV_Peace.ttf') format('truetype'),
+        font-url('/assets/HDV_Peace.svg#webfont') format('svg');
 }

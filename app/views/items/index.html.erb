@@ -22,6 +22,21 @@
 </div>
 
 
+<!-- new search form -->
+    <form>
+      <div class="input-field">
+        <div class="row">
+           <%= form_tag items_path, :method => 'get' do %>
+           <label for="search"><i class="material-icons">search</i></label>
+           <div id="cursor">
+             <%= text_field_tag :search %>
+           </div>
+           <% end %>
+       </div>
+      </div>
+    </form>
+
+
 <% @items.each do |item| %>
     <div class="row">
 <div class="col s12 m6 l6">

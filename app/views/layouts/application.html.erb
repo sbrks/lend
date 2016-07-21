@@ -2,12 +2,21 @@
 <html>
 <head>
   <title>LendZen</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
+
+<link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
 
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
 
+<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
+
+
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tags %>
 
 <script>
 UPLOADCARE_PUBLIC_KEY = 'b87de74d4f4e35f8c03e';
@@ -21,20 +30,24 @@ UPLOADCARE_PUBLIC_KEY = 'b87de74d4f4e35f8c03e';
 <body>
 <nav>
 	<div class="white-text nav-wrapper deep-purple darken-4 valign-wrapper">	
-		<a href="/" class="brand-logo center">LendZen</a>
+		<a href="/" class="brand-logo center" id="logo">LendZen</a>
 		<div class="row white-text">
+
 		<div class="col s12 pull-s6">
 			<ul id="nav-mobile" class="left">
 				<li><a href="/about">About</a></li>
 				<li><a href="/home/faq">FAQ</a></li>
 				<li><a href="/contact">Contact</a></li>
-		</ul>
+			</ul>
 		</div>
+
 		</div>
+		
+
+		<div class="col s12">
 		<ul id="nav-mobile" class="right">
 			<% if current_user %>
-  				<li> <%= current_user.email %></li>
-  				<li><%= link_to 'My Profile', user_path(current_user.id) %></li>
+  				<li>Hi, <%= current_user.first_name %>! <%= link_to 'Profile', user_path(current_user.id) %></li>
   				<li><%= link_to 'Messages', conversations_path %></li>
   				<li><%= link_to "Logout", sessions_path, method: :delete %></li>
 			<% else %>
@@ -43,7 +56,9 @@ UPLOADCARE_PUBLIC_KEY = 'b87de74d4f4e35f8c03e';
 			<% end %>
 		</ul>
 	</div>
+	</div>
 </nav>
+
 
 <div class="container">
 

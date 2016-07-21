@@ -3,7 +3,7 @@
 
         <div class="requestLink">
         <% if @user.id != @offeredbyid %>
-            <h4><a href="/users/<%= @offeredby.id %>">Send <%= @offeredby.first_name %> a Message to Request to Borrow</a> </h4>
+            <h4><a href="/conversations/<%= @offeredby.id %>/messages">Send <%= @offeredby.first_name %> a Message to Request to Borrow</a> </h4>
           <% end %>
         </div>
 
