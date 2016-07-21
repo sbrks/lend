@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
 
   before_action :require_login, except: [:index, :show]
 
-  before_filter :validate_user, :only => [:edit, :update, :destroy]
+  before_filter :validate_user, :only => [:edit, :update, :destroy, :create]
 
 
   # GET /items

@@ -89,8 +89,8 @@
 <!-- deleted blue friend delete etc buttons, see email 2 -->
 
   <% if current_user == @user %>
-      <a href="/users/<%= @user.id %>/edit"><i class="fi-pencil icons"></i></a>
-      <i class="fi-trash icons"></i>&ensp;<%= link_to "", @user, :method => :delete %>
+      <a href="/users/<%= @user.id %>/edit"></a>
+     <%= link_to "", @user, :method => :delete %>
     <% else %>
       <% unless current_user == @user || current_user.friends_with?(@user) || current_user.friend_pending?(@user) || current_user.friend_request?(@user) %>
       <i class="fi-torsos-all icons"></i>&ensp;<b>
@@ -108,10 +108,10 @@
 <% @user.friends.each do |friend| %>
 <div class="row">
 <div class="col s12 m6 l6">
-  <ul class="img-list">
+  <ul class="img-list friends-list">
     <li>
-      <img src="<%= friend.image_url %>" width="400px" height="325px" />
-      <span class="text-content">
+      <img src="<%= friend.image_url %>"/>
+      <span class="friend-content">
         <span><%= friend.first_name %><br><br><br>
         <a class="btn itembutt" href="/users/<%= friend.id %>">See More</a>
         </span>

@@ -22,10 +22,14 @@
  }
 
 
+a:hover {
+  background-color:transparent;
+}
 .slider {
   width: 100%;
   height: 600px;
   margin: 0;
+  font-size: 50px;
 }
 nav a{
   font-family: 'Montserrat', sans-serif;
@@ -68,11 +72,16 @@ ul.img-list li:hover {
   transform: scale(1.1);
 }
 
+ul.friends-list li img {
+  display: inline-block;
+  height: 250px;
+  position: relative;
+  width: 250px;
+}
 
 
-ul.img-list li:hover span.text-content {
+ul.friends-list li:hover span.friend-content {
   opacity: 1;
-
 }
 
 span.text-content {
@@ -95,12 +104,36 @@ span.text-content {
   transition: opacity 500ms;
 }
 
-span.text-content button {
-  background-color: red;
- font-size: 20px;
+span.friend-content {
+  background: rgba(0,0,0,0.5);
+  font-size: 40px;
+  margin-left: 23px;
+  line-height: 40px;
+  padding-top: 60px;
+  color: white;
+  cursor: pointer;
+  display: table;
+  height: 250px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 250px;
+  opacity: 0;
+   -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
 }
 
+
 span.text-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+
+}
+
+span.friend-content span {
   display: table-cell;
   text-align: center;
   vertical-align: middle;
