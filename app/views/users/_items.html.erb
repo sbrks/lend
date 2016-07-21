@@ -7,15 +7,15 @@
   <% if @current_user.items != [] %>
 <% @user.items.each do |useritem| %>
 <div class="row">
-<div class="col s12">
+<div class="col s12 userstuff">
  <h4><a href="/items/<%= useritem.id %>/"> <%= useritem.title %> </a></h4>
   <%= image_tag("#{useritem.image_url}", :width => "250") %>
 <h6>Daily Price: <%= useritem.price %></h6>
 <h6>Availability: <%= useritem.availability %></h6>
 <h6><%= useritem.description %></h6>
 <% if @current_user.id == useritem.user_id %>
-  <a href="/items/<%= useritem.id %>/edit" class="btn white-text">Edit Item</a>
-  <a href="/items/<%= useritem.id %>/delete" class="btn white-text">Delete Item</a>
+  <a href="/items/<%= useritem.id %>/edit" class="btn red accent-3 white-text">Edit Item</a>
+  <a href="/items/<%= useritem.id %>/delete" class="btn red accent-3 white-text">Delete Item</a>
   <% end %>
 <% end %>
 <% end %>

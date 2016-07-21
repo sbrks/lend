@@ -1,9 +1,10 @@
-<div class="container">
+
   <div class="row"><br>
       <div class="col s12 center-align">
-        <%= button_to "Find Users", users_path, method: :get, class: "btn" %>
+        <%= button_to "Find Users", users_path, method: :get, class: "btn red accent-3" %>
       </div><br>
-        <div class='col m4'>
+        <div class='col m4 newitem'>
+
       <h4>Message a Friend</h4>
 
       <% current_user.friends.each do |user| %>
@@ -16,6 +17,7 @@
     </div>
 
     <div class='col m8'>
+
     <h3>Ongoing Conversations</h3>
         <% @conversations.each do |conversation| %>
           <% if conversation.sender_id == current_user.id || conversation.recipient_id == current_user.id %>
@@ -25,11 +27,10 @@
               <% recipient = User.find(conversation.sender_id) %>
             <% end %>
           <% last_msg = conversation.messages.count - 1 %>
-          <h4><%= link_to recipient.first_name, conversation_messages_path(conversation)%></h4>
-            <br>
+          <h4><%= link_to recipient.first_name, conversation_messages_path(conversation)%></h4>            <br>
           <hr>
           <% end %>
         <% end %>
     </div>
+    </div>
   </div>
-</div>

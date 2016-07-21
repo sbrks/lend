@@ -31,6 +31,10 @@ a:hover {
   margin: 0;
   font-size: 50px;
 }
+
+nav {
+  height: 100px;
+}
 nav a{
   font-family: 'Montserrat', sans-serif;
 }
@@ -38,6 +42,8 @@ nav a{
 #logo {
   font-family: 'Bree Serif', serif;
   font-size: 48px;
+  vertical-align:center;
+  margin-top:16px;
 
 }
 
@@ -151,10 +157,10 @@ span.friend-content span {
   width: 100%;
 }
 
-#lendbutton{
-  width: 290px;
-  font-size: 20px;
-  margin-bottom: 12px;
+a.lendbutton{
+  width: 200px;
+  font-size: 24px;
+  margin: 0 auto;
 
 }
 
@@ -162,9 +168,9 @@ span.friend-content span {
   color: white;
 }
 
-#borrowbutton {
-  width: 290px;
-  font-size: 20px;
+a.borrowbutton {
+  width: 200px;
+  font-size: 24px;
 
 }
 
@@ -324,4 +330,13 @@ color: red;
   background-color:white;
   border: solid black 1px;
   margin-top: 20px;
+}
+
+.userstuff a:hover {
+  color: #42a5f5;
+  transform: scale(1.1);
+}
+
+i.icon-blue {
+  color: #ff1744;
 }

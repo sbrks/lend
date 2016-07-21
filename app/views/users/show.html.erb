@@ -30,8 +30,8 @@
      </div>
   <div class="row profileButtons center-align">
         <div class="col s12 m12 l12">
-        <a class="waves-effect waves-light btn red lighten-1 white-text" href="#stuff">My Stuff</a>
-          <a class="waves-effect waves-light btn red lighten-1 white-text" href="#friends">My Friends</a>
+        <a class="waves-effect waves-light btn red accent-3 white-text" href="#stuff">My Stuff</a>
+          <a class="waves-effect waves-light btn red accent-3 white-text" href="#friends">My Friends</a>
         </div>
 
   </div>
@@ -133,7 +133,7 @@
 
 
 <div class="container friends" id="friends">
-<div class="row card" id="showFriends">
+<div class="row card userstuff" id="showFriends">
     <% if current_user == @user %>
       <div class="col s12">
           <h3>Manage Requests</h3>
@@ -184,19 +184,20 @@
         </div>
     </div>
 </div>
+</div>
+</div>
 
 <!-- end stuff div -->
 
 <hr><br>
-  <div class="row">
-
+<div class="container center-align">
+  <div class="row center-align">
   <% if @current_user == @user %>
-    <div class="row center-align">
-        <div class="showbutts col s12 m6 l6">
-          <a id="lendbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items/new">Lend Something</a>
+        <div class="center-align col s12 m6 l6">
+          <a id="lendbutton" class="waves-effect waves-light btn red accent-3 white-text" href="/items/new">Lend</a>
         </div>
       <div class="col s12 m6 l6">
-        <a id="borrowbutton" class="waves-effect waves-light btn-large red darken-1 white-text" href="/items">Borrow Something</a>
+        <a id="borrowbutton" class="waves-effect waves-light btn red accent-3 white-text" href="/items">Borrow</a>
       </div>
      </div>
      </div>
