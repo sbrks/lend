@@ -4,4 +4,8 @@ class HomeController < ApplicationController
     	render :index
   	end
 
+  	def faq 
+  		render :faq
+  	end
+
 end

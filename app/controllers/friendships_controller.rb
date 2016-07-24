@@ -9,11 +9,13 @@ class FriendshipsController < ApplicationController
   def add
     current_user.friend_request(@friend)
     current_user.save
+    flash[:success] = "Friend request successfully sent!"
     redirect_to current_user
   end
 
   def accept
     current_user.accept_request(@friend)
+    flash[:success] = "Friend request successfully accepted!"
     redirect_to current_user
   end
 

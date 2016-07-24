@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get '/items/:id/borrow', to: 'items#borrow'
 
+  get '/faq', to: 'home#faq'
+
 
 
 
