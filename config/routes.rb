@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   resources :locations, :items, :users
+
+  #home routes
   root to: "home#index"
 
   get '/', to: 'home#index'
@@ -12,7 +14,6 @@ Rails.application.routes.draw do
   get '/items/:id/borrow', to: 'items#borrow'
 
   get '/faq', to: 'home#faq'
-
 
 
 
@@ -39,7 +40,7 @@ get  '/users/:id', to: 'friendships#show', as: 'show_friendship'
   post '/users/:id/block', to: 'friendships#block', as: 'block'
   post '/users/:id/unblock', to: 'friendships#unblock', as: 'unblock'
   
-  # handles all unknown requests and sends them home
+  # handles all unknown requests and redirects them home
   get "*path" => "items#index"
 
 

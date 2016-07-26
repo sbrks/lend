@@ -3,34 +3,30 @@
 <head>
   <title>LendZen</title>
 
+<!-- CSS and fonts -->
 <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet' type='text/css'>
-
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
-
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat">
-
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
-
 <link href="https://fonts.googleapis.com/css?family=Bree+Serif" rel="stylesheet">
-
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 
+<!-- asset pipeline -->
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 
+<!--uploadcare-->
 <script>
 UPLOADCARE_PUBLIC_KEY = 'b87de74d4f4e35f8c03e';
 </script>
-
 <script src="https://ucarecdn.com/widget/2.9.0/uploadcare/uploadcare.full.min.js" charset="utf-8"></script>
-
 
 </head>
 
 <body>
+<!-- nav bar -->
 <nav>
 	<div class="white-text nav-wrapper deep-purple darken-4 valign-wrapper">	
 		<a href="/" class="brand-logo center" id="logo">LendZen</a>
@@ -59,7 +55,7 @@ UPLOADCARE_PUBLIC_KEY = 'b87de74d4f4e35f8c03e';
 	</div>
 </nav>
 
-
+<!-- app body -->
 <div class="container">
 
 <%= yield %>
@@ -67,27 +63,33 @@ UPLOADCARE_PUBLIC_KEY = 'b87de74d4f4e35f8c03e';
 </div>
 
 
+<!-- footer -->
 <footer class="page-footer deep-purple darken-4" width="100%">
 	<div class="container">
 		<div class="row">
 			<div class="col s12 offset-12">
 				<h5 class="white-text">Links</h5>
 				<ul>
-					<li><a class="white-text text-lighten-3" href="#!">About</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">FAQ</a></li>
-					<li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
+					<li><a class="white-text text-lighten-3" href="/about">About</a></li>
+					<li><a class="grey-text text-lighten-3" href="/faq">FAQ</a></li>
+					<li><a class="grey-text text-lighten-3" href="/contact">Contact</a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
+
+<div class="container">
+	<div class="row">
 	<div class="footer-copyright">
-		<div class="container">
-		Copyright 2016
-		<a class="grey-text text-lighten-4 right" href="#!"> About  </a>
-		<a class="grey-text text-lighten-4 right" href="#!"> FAQ  |  </a>
-		<a class="grey-text text-lighten-4 right" href="#!"> Contact | </a>
-		</div>
+		Copyright 2016 LendZen
+		<ul>
+		<li><a class="grey-text text-lighten-4" href="/about"> About</a></li>
+		<li><a class="grey-text text-lighten-4" href="/faq"> FAQ</a></li>
+		<li><a class="grey-text text-lighten-4" href="/contact"> Contact</a></li>
+		</ul>
 	</div>
+	</div>
+</div>
 </footer>
 
 </body>
