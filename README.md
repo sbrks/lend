@@ -11,7 +11,14 @@ Welcome to Lendzen! I'm glad you're here. I created Lendzen out of the belief th
 *Coding designs into HTML/CSS accordingly
 
 ###Sketches
-![Create Account](https://cloud.githubusercontent.com/assets/13695123/17152125/65a876b0-532b-11e6-8e9e-b701d4d1c2eb.png "CreateAccount")
+![Create Account (/signup) ](https://cloud.githubusercontent.com/assets/13695123/17152126/65ad7746-532b-11e6-93a3-c2f78b052e17.png "CreateAccount")
+
+![Product Index Page (.../items)](https://cloud.githubusercontent.com/assets/13695123/17152129/65b09458-532b-11e6-9a16-a274df42583e.png "Product Page")
+
+![Profile Show Page (.../user/1)](https://cloud.githubusercontent.com/assets/13695123/17152130/65b4abba-532b-11e6-97af-a4d89c722ad2.png "Profile Page")
+
+![Product Show Page (/item/1](https://cloud.githubusercontent.com/assets/13695123/17152133/65cab248-532b-11e6-872c-5d9bbf22716d.png "Product Show Page")
+
 
 
 
