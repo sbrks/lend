@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
 	has_friendship
 
+	#user search method
 	def self.search(search)
    		where(
    			"first_name ILIKE ? OR 
@@ -17,10 +18,9 @@ class User < ActiveRecord::Base
  		)
  	end
 
-
 #friendship methods
-	def friend_request?(user)
-   user && !friends_with?(user) && user.id.in?(requested_friend_ids)
+  def friend_request?(user)
+    user && !friends_with?(user) && user.id.in?(requested_friend_ids)
   end
 
   def requested_friend_ids

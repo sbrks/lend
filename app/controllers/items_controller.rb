@@ -46,7 +46,7 @@ class ItemsController < ApplicationController
 
     @item = Item.create(item_params)
 
-    redirect_to "/items/#{@item.id}"
+    redirect_to "/items"
   end
 
 

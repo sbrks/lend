@@ -1,6 +1,7 @@
 $(document).ready(function() {
   $('select').material_select();
   $('.modal-trigger').leanModal();
+  //parallax slider
   $('.parallax').parallax();
   $('.slider').slider({
     full_width: true,
@@ -9,6 +10,7 @@ $(document).ready(function() {
     interval: 1500
     });
 
+//hover
   $('.materialboxed').hover(
   function() { $(this).addClass('hover') },
   function() { $(this).removeClass('hover') } 
@@ -17,8 +19,7 @@ $(document).ready(function() {
 
 
 });
-//if i use this, remove turbolinks gem
-
+//dropdown
   $('.dropdown-button').dropdown({
       inDuration: 500,
       outDuration: 225,

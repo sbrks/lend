@@ -4,18 +4,11 @@ Rails.application.routes.draw do
 
   #home routes
   root to: "home#index"
-
   get '/', to: 'home#index'
-
   get '/contact', to: 'home#contact'
-
   get '/about', to: 'home#about'
-
   get '/items/:id/borrow', to: 'items#borrow'
-
   get '/faq', to: 'home#faq'
-
-
 
   #create new users
   get '/signup', to: 'users#new', as: 'sign_up'
@@ -32,7 +25,7 @@ Rails.application.routes.draw do
   end
 
 #friendship routes
-get  '/users/:id', to: 'friendships#show', as: 'show_friendship'
+  get  '/users/:id', to: 'friendships#show', as: 'show_friendship'
   post '/users/:id/request', to: 'friendships#add', as: 'request'
   post '/users/:id/accept', to: 'friendships#accept', as: 'accept'
   post '/users/:id/decline', to: 'friendships#decline', as: 'decline'
