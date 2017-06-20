@@ -6,13 +6,13 @@ Welcome! I created Lendzen out of the belief that there is too much stuff in the
 
 ## PLANNING
 
-###Process
+### Process
 *Initial idea
 *Sketching out wireframes and user stories
 *Converting wireframes to Sketch App designs
 *Coding designs into HTML/CSS accordingly
 
-###Sketches
+### Sketches
 ![Create Account (/signup) ](https://cloud.githubusercontent.com/assets/13695123/17152763/16e7b66e-532e-11e6-9152-133b46f1b413.png "CreateAccount")
 
 ![Product Index Page (.../items)](https://cloud.githubusercontent.com/assets/13695123/17152129/65b09458-532b-11e6-9a16-a274df42583e.png "Product Page")
@@ -22,7 +22,7 @@ Welcome! I created Lendzen out of the belief that there is too much stuff in the
 ![Product Show Page (/item/1](https://cloud.githubusercontent.com/assets/13695123/17152133/65cab248-532b-11e6-872c-5d9bbf22716d.png "Product Show Page")
 
 
-###Trello
+### Trello
 Trello board: https://trello.com/b/qsyIC9rW/lendzen
 
 
