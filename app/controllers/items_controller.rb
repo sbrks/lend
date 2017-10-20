@@ -25,7 +25,7 @@ class ItemsController < ApplicationController
     @offeredby = User.find(@offeredbyid)
     @image = @item.image_url
     @user = current_user
-    params[:item][:user_id] = @user.id  
+    # params[:item][:user_id] = @user.id
   end
 
   # GET /items/new
@@ -50,7 +50,7 @@ class ItemsController < ApplicationController
   end
 
 
-  def edit 
+  def edit
     @item_update = Item.find(params[:id])
     render "/items/edit"
   end
@@ -80,8 +80,8 @@ class ItemsController < ApplicationController
     @offeredby = User.find(@offeredbyid)
     @image = @item.image_url
     @user = current_user
-    params[:item][:user_id] = @user.id 
-    render :borrow 
+    # params[:item][:user_id] = @user.id
+    render :borrow
   end
 
   private
@@ -90,7 +90,7 @@ class ItemsController < ApplicationController
       params.require(:item).permit(:title, :description, :price, :availability, :user_id, :image_url)
     end
 
-    
+
     def validate_user
       redirect_to root_path unless current_user.id.to_s == params[:id]
     end
